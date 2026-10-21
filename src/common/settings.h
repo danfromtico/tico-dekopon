@@ -596,7 +596,7 @@ struct Values {
     SwitchableSetting<TextureFilter> texture_filter{TextureFilter::NoFilter, Keys::texture_filter};
     SwitchableSetting<TextureSampling> texture_sampling{TextureSampling::GameControlled,
                                                         Keys::texture_sampling};
-    SwitchableSetting<AnisotropicFiltering> anisotropic_filtering{AnisotropicFiltering::X16,
+    SwitchableSetting<AnisotropicFiltering> anisotropic_filtering{AnisotropicFiltering::Off,
                                                                   Keys::anisotropic_filtering};
     SwitchableSetting<u16, true> delay_game_render_thread_us{0, 0, 65000,
                                                              Keys::delay_game_render_thread_us};

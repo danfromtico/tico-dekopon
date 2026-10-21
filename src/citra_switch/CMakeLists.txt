@@ -30,6 +30,7 @@ add_executable(citra_switch
     horizon_exception.cpp
     horizon_exception_entry.S
     horizon_exception_entry.h
+    horizon_libc_compat.cpp
     horizon_sys_stubs.cpp
     input.cpp
     input.h
@@ -51,10 +52,6 @@ add_executable(citra_switch
     usb_storage.cpp
     usb_storage.h
 )
-
-if (NOT ENABLE_VULKAN)
-    target_sources(citra_switch PRIVATE horizon_libc_compat.cpp)
-endif()
 
 # oaknut_horizon_jit is pulled in transitively via oaknut
 target_link_libraries(citra_switch PRIVATE citra_core citra_common inih usbhsfs)
@@ -101,9 +98,9 @@ if (ENABLE_OPENGL)
         ${SWITCH_EGL} ${SWITCH_GLESV2} ${SWITCH_GLAPI} ${SWITCH_DRM_NOUVEAU})
 endif()
 
-# Vulkan supported provided by the NXVK project
+# Vulkan provided by mesa-switch (NVK)
 if (ENABLE_VULKAN)
-    target_link_libraries(citra_switch PRIVATE nxvk)
+    target_link_libraries(citra_switch PRIVATE mesa_switch_vulkan)
 endif()
 
 nx_generate_nacp(OUTPUT dekopon.nacp

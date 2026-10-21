@@ -565,70 +565,19 @@ if (DEKOPON)
     add_subdirectory(libusbhsfs EXCLUDE_FROM_ALL)
 endif()
 
-# NXVK  is consumed as a set of prebuilt static archives rather than an add_subdirectory.
+# Vulkan comes from mesa-switch's loaderless NVK, installed in portlibs by the
+# switch-dev image (ghcr.io/autorunhq/switch-dev).
 if (DEKOPON AND ENABLE_VULKAN)
-    set(NXVK_ROOT "${CMAKE_SOURCE_DIR}/externals/nxvk" CACHE PATH
-        "Root of the NXVK checkout that holds the prebuilt driver archives")
+    find_library(MESA_SWITCH_VULKAN vulkan REQUIRED)
+    find_library(MESA_SWITCH_EXPAT expat REQUIRED)
+    find_library(MESA_SWITCH_ZLIB z REQUIRED)
+    message(STATUS "Using mesa-switch Vulkan from ${MESA_SWITCH_VULKAN}")
 
-    # Archives live under <root>/switch/build/cross.
-    set(_nxvk_root "${NXVK_ROOT}")
-    if (NOT EXISTS "${_nxvk_root}/switch/build/cross/src/nouveau/vulkan/libnvk.a")
-        set(_nxvk_root "${CMAKE_SOURCE_DIR}/../nxvk")
-    endif()
-    set(_nxvk_cross "${_nxvk_root}/switch/build/cross")
-
-    if (NOT EXISTS "${_nxvk_cross}/src/nouveau/vulkan/libnvk.a")
-        message(FATAL_ERROR
-            "NXVK driver archives not found. Build NXVK (its switch/docker + "
-            "meson flow) then set -DNXVK_ROOT=/path/to/nxvk. Looked under "
-            "${NXVK_ROOT}/switch/build/cross and ${CMAKE_SOURCE_DIR}/../nxvk/switch/build/cross")
-    endif()
-    message(STATUS "Using NXVK driver archives from ${_nxvk_cross}")
-
-    if (DEFINED ENV{DEVKITPRO})
-        set(_dkp "$ENV{DEVKITPRO}")
-    else()
-        set(_dkp "${DEVKITPRO}")
-    endif()
-
-    set(_nvk_driver "${_nxvk_cross}/src/nouveau/vulkan/libnvk.a")
-    set(_nvk_support
-        "${_nxvk_cross}/src/util/libmesa_util.a"
-        "${_nxvk_cross}/src/util/libmesa_util_simd.a"
-        "${_nxvk_cross}/src/util/blake3/libblake3.a"
-        "${_nxvk_cross}/src/c11/impl/libmesa_util_c11.a"
-        "${_nxvk_cross}/src/nouveau/compiler/libnak.a"
-        "${_nxvk_cross}/src/nouveau/compiler/libnak_rs.a"
-        "${_nxvk_cross}/src/compiler/rust/libcompiler_c_helpers.a"
-        "${_nxvk_cross}/src/nouveau/headers/libnvidia_headers_c.a"
-        "${_nxvk_cross}/src/nouveau/nil/libnil.a"
-        "${_nxvk_cross}/src/nouveau/nil/liblibnil_format_table.a"
-        "${_nxvk_cross}/src/compiler/nir/libnir.a"
-        "${_nxvk_cross}/src/compiler/libcompiler.a"
-        "${_nxvk_cross}/src/nouveau/mme/libnouveau_mme.a"
-        "${_nxvk_cross}/src/nouveau/winsys/libnouveau_ws.a"
-        "${_nxvk_cross}/src/vulkan/util/libvulkan_util.a"
-        "${_nxvk_cross}/src/compiler/spirv/libvtn.a"
-        "${_nxvk_cross}/src/util/libxmlconfig.a"
-        "${_dkp}/portlibs/switch/lib/libz.a"
-        "${_dkp}/portlibs/switch/lib/libexpat.a"
-    )
-
-    add_library(nxvk_compat OBJECT "${_nxvk_root}/switch/smoke/nvk_compat.c")
-    target_include_directories(nxvk_compat PRIVATE "${_dkp}/libnx/include")
-    target_compile_definitions(nxvk_compat PRIVATE
-        __SWITCH__ _GNU_SOURCE _DEFAULT_SOURCE)
-    target_disable_warnings(nxvk_compat)
-
-    add_library(nxvk INTERFACE)
-    # Keep Mesa's vendored headers off the include path.
-    target_sources(nxvk INTERFACE $<TARGET_OBJECTS:nxvk_compat>)
-    target_link_options(nxvk INTERFACE
+    add_library(mesa_switch_vulkan INTERFACE)
+    target_link_options(mesa_switch_vulkan INTERFACE
         "-Wl,-u,vk_icdGetInstanceProcAddr"
-        "-Wl,--gc-sections"
-        "-Wl,--whole-archive" "${_nvk_driver}" "-Wl,--no-whole-archive"
         "-Wl,--start-group"
-        ${_nvk_support}
+        "${MESA_SWITCH_VULKAN}" "${MESA_SWITCH_EXPAT}" "${MESA_SWITCH_ZLIB}"
         "-lnx" "-lc" "-lm" "-lstdc++" "-pthread"
         "-Wl,--end-group"
     )

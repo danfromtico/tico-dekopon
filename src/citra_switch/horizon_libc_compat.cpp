@@ -2,7 +2,7 @@
 // Copyright(c) 2026: PalindromicBreadLoaf(palindromicbreadloaf@tuta.com)
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-// Newlib gap-fills for the non-NXVK Switch build.
+// Newlib gap-fills for the Switch build.
 
 #include <cerrno>
 #include <cstddef>
@@ -54,6 +54,8 @@ long sysconf(int name) {
     }
 }
 
+// mesa-switch's libvulkan.a already provides posix_memalign.
+#ifndef ENABLE_VULKAN
 int posix_memalign(void** memptr, size_t alignment, size_t size) {
     if (alignment < sizeof(void*) || (alignment & (alignment - 1)) != 0) {
         return EINVAL;
@@ -65,6 +67,7 @@ int posix_memalign(void** memptr, size_t alignment, size_t size) {
     *memptr = p;
     return 0;
 }
+#endif
 
 // Horizon has no POSIX signals
 int pthread_sigmask(int how, const sigset_t* set, sigset_t* oldset) {

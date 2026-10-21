@@ -109,10 +109,6 @@
 	path = externals/cryptopp
 	url = https://github.com/PalindromicBreadLoaf/cryptopp-modern-nx.git
 	branch = switch
-[submodule "nxvk"]
-	path = externals/nxvk
-	url = https://github.com/PalindromicBreadLoaf/nxvk.git
-	branch = switch
 [submodule "externals/libusbhsfs/libusbhsfs"]
 	path = externals/libusbhsfs/libusbhsfs
 	url = https://github.com/DarkMatterCore/libusbhsfs.git

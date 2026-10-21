@@ -702,7 +702,7 @@ SettingEntry FrameGenerationEntry() {
 SettingEntry LosslessDllEntry() {
     const bool present = Vulkan::IsLsfgShaderDllPresent();
     SettingEntry entry =
-        Base({"Lossless.dll", "Frame generation needs this file under lsfg/ to run."});
+        Base({"Lossless.dll", "Frame generation needs this file in sdmc:/tico/system/lsfg/ or lsfg/ to run."});
     entry.id = "Lossless.dll";
     entry.value = [present] { return std::string{present ? "Found" : "Missing"}; };
     entry.step = [](int) {};

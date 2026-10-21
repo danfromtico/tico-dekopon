@@ -201,8 +201,22 @@ private:
     size_t slot_cursor{};
 };
 
+// The user's own Lossless.dll (never shipped): the folder the tico cores share, Dekopon's own,
+// else Dolphin's or ppsspp-nx's copy. The shared one when there is none, to say where it goes.
 std::string GetLsfgShaderDllPath() {
-    return FileUtil::GetUserPath(FileUtil::UserPath::UserDir) + "lsfg/Lossless.dll";
+    constexpr const char* kSharedDllPath = "sdmc:/tico/system/lsfg/Lossless.dll";
+    const std::string paths[] = {
+        kSharedDllPath,
+        FileUtil::GetUserPath(FileUtil::UserPath::UserDir) + "lsfg/Lossless.dll",
+        "sdmc:/switch/dolphin/lsfg/Lossless.dll",
+        "sdmc:/switch/ppsspp-nx/lsfg/Lossless.dll",
+    };
+    for (const std::string& path : paths) {
+        if (FileUtil::Exists(path)) {
+            return path;
+        }
+    }
+    return kSharedDllPath;
 }
 
 bool IsLsfgShaderDllPresent() {

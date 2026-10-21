@@ -1,0 +1,38 @@
+{
+  "id": "dekopon",
+  "name": "Dekopon",
+  "nro": "tico-dekopon.nro",
+  "launch": "\"{nro}\" \"{rom}\" \"{title}\"",
+  "settings": "config/modules/dekopon/settings.json",
+  "config_file": "dekopon.jsonc",
+  "system_dir": "dekopon",
+  "is_libretro": false,
+  "bool_true_value": "true",
+  "bool_false_value": "false",
+  "systems": [
+    {
+      "slug": "3ds",
+      "title": "Nintendo 3DS",
+      "short_title": "3DS",
+      "extensions": [
+        ".3ds",
+        ".3dsx",
+        ".z3dsx",
+        ".elf",
+        ".axf",
+        ".cci",
+        ".zcci",
+        ".cxi",
+        ".zcxi",
+        ".app"
+      ],
+      "games_file": "3ds.dat",
+      "colors": {
+        "start": "5FAFE6",
+        "end": "4A7DE0",
+        "start_dark": "3F7FA8",
+        "end_dark": "3459A8"
+      }
+    }
+  ]
+}

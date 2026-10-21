@@ -583,6 +583,32 @@ if (DEKOPON AND ENABLE_VULKAN)
     )
 endif()
 
+# Dear ImGui and stb_image, for tico's overlay (src/tico)
+if (DEKOPON AND ENABLE_VULKAN)
+    add_library(imgui STATIC
+        imgui/imgui/imgui.cpp
+        imgui/imgui/imgui_draw.cpp
+        imgui/imgui/imgui_tables.cpp
+        imgui/imgui/imgui_widgets.cpp
+        imgui/imgui/backends/imgui_impl_vulkan.cpp
+    )
+    target_include_directories(imgui PUBLIC
+        ./imgui
+        ./imgui/imgui
+        ./imgui/imgui/backends
+    )
+    target_compile_definitions(imgui PUBLIC
+        IMGUI_USER_CONFIG="imgui_user_config.h"
+        IMGUI_IMPL_VULKAN_NO_PROTOTYPES
+        IMGUI_DISABLE_DEFAULT_SHELL_FUNCTIONS
+    )
+    target_link_libraries(imgui PUBLIC vulkan-headers)
+    target_disable_warnings(imgui)
+
+    add_library(stb INTERFACE)
+    target_include_directories(stb INTERFACE ./stb)
+endif()
+
 # lsfg-vk
 # GPL-V3-or-later
 if (ENABLE_LSFG)

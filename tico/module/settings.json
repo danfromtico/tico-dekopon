@@ -1,0 +1,3456 @@
+{
+  "core_id": "dekopon",
+  "display_name": "Dekopon",
+  "config_file": "dekopon.jsonc",
+  "slugs": [
+    "3ds",
+    "dekopon"
+  ],
+  "is_libretro": false,
+  "bool_true_value": "true",
+  "bool_false_value": "false",
+  "tabs": [
+    {
+      "name": "settings_dekopon_tab_general",
+      "sections": [
+        {
+          "title": "settings_dekopon_section_performance",
+          "options": [
+            {
+              "key": "dekopon_frame_limit",
+              "label": "settings_dekopon_frame_limit",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "Unlimited",
+                  "value": "0"
+                },
+                {
+                  "label": "25%",
+                  "value": "25"
+                },
+                {
+                  "label": "50%",
+                  "value": "50"
+                },
+                {
+                  "label": "75%",
+                  "value": "75"
+                },
+                {
+                  "label": "100%",
+                  "value": "100"
+                },
+                {
+                  "label": "125%",
+                  "value": "125"
+                },
+                {
+                  "label": "150%",
+                  "value": "150"
+                },
+                {
+                  "label": "200%",
+                  "value": "200"
+                },
+                {
+                  "label": "300%",
+                  "value": "300"
+                },
+                {
+                  "label": "400%",
+                  "value": "400"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_cpu_clock_percentage",
+              "label": "settings_dekopon_cpu_clock_percentage",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "25%",
+                  "value": "25"
+                },
+                {
+                  "label": "50%",
+                  "value": "50"
+                },
+                {
+                  "label": "75%",
+                  "value": "75"
+                },
+                {
+                  "label": "100%",
+                  "value": "100"
+                },
+                {
+                  "label": "125%",
+                  "value": "125"
+                },
+                {
+                  "label": "150%",
+                  "value": "150"
+                },
+                {
+                  "label": "175%",
+                  "value": "175"
+                },
+                {
+                  "label": "200%",
+                  "value": "200"
+                },
+                {
+                  "label": "225%",
+                  "value": "225"
+                },
+                {
+                  "label": "250%",
+                  "value": "250"
+                },
+                {
+                  "label": "275%",
+                  "value": "275"
+                },
+                {
+                  "label": "300%",
+                  "value": "300"
+                },
+                {
+                  "label": "325%",
+                  "value": "325"
+                },
+                {
+                  "label": "350%",
+                  "value": "350"
+                },
+                {
+                  "label": "375%",
+                  "value": "375"
+                },
+                {
+                  "label": "400%",
+                  "value": "400"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_boost_mode",
+              "label": "settings_dekopon_boost_mode",
+              "type": "bool",
+              "default": "false",
+              "restart": true
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_on_screen",
+          "options": [
+            {
+              "key": "fps_counter_position",
+              "label": "settings_dekopon_fps_counter_position",
+              "type": "enum",
+              "default": "hidden",
+              "choices": [
+                {
+                  "label": "Hidden",
+                  "value": "hidden"
+                },
+                {
+                  "label": "Top left",
+                  "value": "top_left"
+                },
+                {
+                  "label": "Top right",
+                  "value": "top_right"
+                },
+                {
+                  "label": "Bottom left",
+                  "value": "bottom_left"
+                },
+                {
+                  "label": "Bottom right",
+                  "value": "bottom_right"
+                }
+              ]
+            },
+            {
+              "key": "rendered_ir_position",
+              "label": "settings_dekopon_rendered_ir_position",
+              "type": "enum",
+              "default": "hidden",
+              "choices": [
+                {
+                  "label": "Hidden",
+                  "value": "hidden"
+                },
+                {
+                  "label": "Top left",
+                  "value": "top_left"
+                },
+                {
+                  "label": "Top right",
+                  "value": "top_right"
+                },
+                {
+                  "label": "Bottom left",
+                  "value": "bottom_left"
+                },
+                {
+                  "label": "Bottom right",
+                  "value": "bottom_right"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_shader_notice",
+              "label": "settings_dekopon_shader_notice",
+              "type": "bool",
+              "default": "false"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "settings_dekopon_tab_graphics",
+      "sections": [
+        {
+          "title": "settings_dekopon_section_backend",
+          "options": [
+            {
+              "key": "dekopon_spirv_shader_gen",
+              "label": "settings_dekopon_spirv_shader_gen",
+              "type": "bool",
+              "default": "true",
+              "restart": true
+            },
+            {
+              "key": "dekopon_disable_spirv_optimizer",
+              "label": "settings_dekopon_disable_spirv_optimizer",
+              "type": "bool",
+              "default": "true",
+              "restart": true
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_shaders",
+          "options": [
+            {
+              "key": "dekopon_use_hw_shader",
+              "label": "settings_dekopon_use_hw_shader",
+              "type": "bool",
+              "default": "true"
+            },
+            {
+              "key": "dekopon_shaders_accurate_mul",
+              "label": "settings_dekopon_shaders_accurate_mul",
+              "type": "bool",
+              "default": "true"
+            },
+            {
+              "key": "dekopon_use_shader_jit",
+              "label": "settings_dekopon_use_shader_jit",
+              "type": "bool",
+              "default": "true"
+            },
+            {
+              "key": "dekopon_async_shader_compilation",
+              "label": "settings_dekopon_async_shader_compilation",
+              "type": "bool",
+              "default": "false"
+            },
+            {
+              "key": "dekopon_use_disk_shader_cache",
+              "label": "settings_dekopon_use_disk_shader_cache",
+              "type": "bool",
+              "default": "true"
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_threading",
+          "options": [
+            {
+              "key": "dekopon_async_gpu_emulation",
+              "label": "settings_dekopon_async_gpu_emulation",
+              "type": "bool",
+              "default": "false",
+              "restart": true
+            },
+            {
+              "key": "dekopon_async_presentation",
+              "label": "settings_dekopon_async_presentation",
+              "type": "bool",
+              "default": "true"
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_presentation",
+          "options": [
+            {
+              "key": "dekopon_use_vsync",
+              "label": "settings_dekopon_use_vsync",
+              "type": "bool",
+              "default": "false"
+            },
+            {
+              "key": "dekopon_use_display_refresh_rate_detection",
+              "label": "settings_dekopon_use_display_refresh_rate_detection",
+              "type": "bool",
+              "default": "true"
+            },
+            {
+              "key": "dekopon_use_skip_duplicate_frames",
+              "label": "settings_dekopon_use_skip_duplicate_frames",
+              "type": "bool",
+              "default": "true"
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_frame_generation",
+          "options": [
+            {
+              "key": "dekopon_use_frame_generation",
+              "label": "settings_dekopon_use_frame_generation",
+              "type": "bool",
+              "default": "false"
+            },
+            {
+              "key": "dekopon_frame_generation_multiplier",
+              "label": "settings_dekopon_frame_generation_multiplier",
+              "type": "enum",
+              "default": "2",
+              "choices": [
+                {
+                  "label": "2x",
+                  "value": "2"
+                },
+                {
+                  "label": "3x",
+                  "value": "3"
+                },
+                {
+                  "label": "4x",
+                  "value": "4"
+                }
+              ],
+              "depends_on": {
+                "key": "dekopon_use_frame_generation",
+                "value": "true"
+              }
+            },
+            {
+              "key": "dekopon_frame_generation_high_refresh",
+              "label": "settings_dekopon_frame_generation_high_refresh",
+              "type": "bool",
+              "default": "false",
+              "depends_on": {
+                "key": "dekopon_use_frame_generation",
+                "value": "true"
+              }
+            },
+            {
+              "key": "dekopon_frame_generation_performance_mode",
+              "label": "settings_dekopon_frame_generation_performance_mode",
+              "type": "bool",
+              "default": "false",
+              "depends_on": {
+                "key": "dekopon_use_frame_generation",
+                "value": "true"
+              }
+            },
+            {
+              "key": "dekopon_frame_generation_flow_scale",
+              "label": "settings_dekopon_frame_generation_flow_scale",
+              "type": "enum",
+              "default": "25",
+              "choices": [
+                {
+                  "label": "25%",
+                  "value": "25"
+                },
+                {
+                  "label": "50%",
+                  "value": "50"
+                },
+                {
+                  "label": "75%",
+                  "value": "75"
+                },
+                {
+                  "label": "100%",
+                  "value": "100"
+                }
+              ],
+              "depends_on": {
+                "key": "dekopon_use_frame_generation",
+                "value": "true"
+              }
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_accuracy",
+          "options": [
+            {
+              "key": "dekopon_simulate_3ds_gpu_timings",
+              "label": "settings_dekopon_simulate_3ds_gpu_timings",
+              "type": "bool",
+              "default": "false"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "settings_dekopon_tab_enhancements",
+      "sections": [
+        {
+          "title": "settings_dekopon_section_resolution",
+          "options": [
+            {
+              "key": "dekopon_resolution_factor",
+              "label": "settings_dekopon_resolution_factor",
+              "type": "enum",
+              "default": "1",
+              "choices": [
+                {
+                  "label": "Auto (window)",
+                  "value": "0"
+                },
+                {
+                  "label": "Native",
+                  "value": "1"
+                },
+                {
+                  "label": "2x",
+                  "value": "2"
+                },
+                {
+                  "label": "3x",
+                  "value": "3"
+                },
+                {
+                  "label": "4x",
+                  "value": "4"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_docked_resolution",
+              "label": "settings_dekopon_docked_resolution",
+              "type": "enum",
+              "default": "same",
+              "choices": [
+                {
+                  "label": "Same as handheld",
+                  "value": "same"
+                },
+                {
+                  "label": "Auto (window)",
+                  "value": "0"
+                },
+                {
+                  "label": "Native",
+                  "value": "1"
+                },
+                {
+                  "label": "2x",
+                  "value": "2"
+                },
+                {
+                  "label": "3x",
+                  "value": "3"
+                },
+                {
+                  "label": "4x",
+                  "value": "4"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_use_integer_scaling",
+              "label": "settings_dekopon_use_integer_scaling",
+              "type": "bool",
+              "default": "false"
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_filtering",
+          "options": [
+            {
+              "key": "dekopon_filter_mode",
+              "label": "settings_dekopon_filter_mode",
+              "type": "bool",
+              "default": "true"
+            },
+            {
+              "key": "dekopon_texture_filter",
+              "label": "settings_dekopon_texture_filter",
+              "type": "enum",
+              "default": "0",
+              "choices": [
+                {
+                  "label": "None",
+                  "value": "0"
+                },
+                {
+                  "label": "Anime4K",
+                  "value": "1"
+                },
+                {
+                  "label": "Bicubic",
+                  "value": "2"
+                },
+                {
+                  "label": "ScaleForce",
+                  "value": "3"
+                },
+                {
+                  "label": "xBRZ",
+                  "value": "4"
+                },
+                {
+                  "label": "MMPX",
+                  "value": "5"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_texture_sampling",
+              "label": "settings_dekopon_texture_sampling",
+              "type": "enum",
+              "default": "0",
+              "choices": [
+                {
+                  "label": "Game Controlled",
+                  "value": "0"
+                },
+                {
+                  "label": "Nearest Neighbor",
+                  "value": "1"
+                },
+                {
+                  "label": "Linear",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_anisotropic_filtering",
+              "label": "settings_dekopon_anisotropic_filtering",
+              "type": "enum",
+              "default": "0",
+              "choices": [
+                {
+                  "label": "Off",
+                  "value": "0"
+                },
+                {
+                  "label": "2x",
+                  "value": "1"
+                },
+                {
+                  "label": "4x",
+                  "value": "2"
+                },
+                {
+                  "label": "8x",
+                  "value": "3"
+                },
+                {
+                  "label": "16x",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_custom_textures",
+          "options": [
+            {
+              "key": "dekopon_custom_textures",
+              "label": "settings_dekopon_custom_textures",
+              "type": "bool",
+              "default": "false"
+            },
+            {
+              "key": "dekopon_preload_textures",
+              "label": "settings_dekopon_preload_textures",
+              "type": "bool",
+              "default": "false"
+            },
+            {
+              "key": "dekopon_async_custom_loading",
+              "label": "settings_dekopon_async_custom_loading",
+              "type": "bool",
+              "default": "true"
+            },
+            {
+              "key": "dekopon_dump_textures",
+              "label": "settings_dekopon_dump_textures",
+              "type": "bool",
+              "default": "false",
+              "restart": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "settings_dekopon_tab_stereo",
+      "sections": [
+        {
+          "title": "settings_dekopon_section_stereoscopic",
+          "options": [
+            {
+              "key": "dekopon_render_3d",
+              "label": "settings_dekopon_render_3d",
+              "type": "enum",
+              "default": "0",
+              "choices": [
+                {
+                  "label": "Off",
+                  "value": "0"
+                },
+                {
+                  "label": "Side by Side",
+                  "value": "1"
+                },
+                {
+                  "label": "Side by side (full)",
+                  "value": "2"
+                },
+                {
+                  "label": "Anaglyph",
+                  "value": "3"
+                },
+                {
+                  "label": "Interlaced",
+                  "value": "4"
+                },
+                {
+                  "label": "Reverse interlaced",
+                  "value": "5"
+                },
+                {
+                  "label": "Nintendo Labo VR",
+                  "value": "6"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_factor_3d",
+              "label": "settings_dekopon_factor_3d",
+              "type": "enum",
+              "default": "0",
+              "choices": [
+                {
+                  "label": "0%",
+                  "value": "0"
+                },
+                {
+                  "label": "10%",
+                  "value": "10"
+                },
+                {
+                  "label": "20%",
+                  "value": "20"
+                },
+                {
+                  "label": "30%",
+                  "value": "30"
+                },
+                {
+                  "label": "40%",
+                  "value": "40"
+                },
+                {
+                  "label": "50%",
+                  "value": "50"
+                },
+                {
+                  "label": "60%",
+                  "value": "60"
+                },
+                {
+                  "label": "70%",
+                  "value": "70"
+                },
+                {
+                  "label": "80%",
+                  "value": "80"
+                },
+                {
+                  "label": "90%",
+                  "value": "90"
+                },
+                {
+                  "label": "100%",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_swap_eyes_3d",
+              "label": "settings_dekopon_swap_eyes_3d",
+              "type": "bool",
+              "default": "false"
+            },
+            {
+              "key": "dekopon_mono_render_option",
+              "label": "settings_dekopon_mono_render_option",
+              "type": "enum",
+              "default": "0",
+              "choices": [
+                {
+                  "label": "Left eye",
+                  "value": "0"
+                },
+                {
+                  "label": "Right eye",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_disable_right_eye_render",
+              "label": "settings_dekopon_disable_right_eye_render",
+              "type": "bool",
+              "default": "false"
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_labo_vr",
+          "options": [
+            {
+              "key": "dekopon_cardboard_screen_size",
+              "label": "settings_dekopon_cardboard_screen_size",
+              "type": "enum",
+              "default": "85",
+              "choices": [
+                {
+                  "label": "30%",
+                  "value": "30"
+                },
+                {
+                  "label": "35%",
+                  "value": "35"
+                },
+                {
+                  "label": "40%",
+                  "value": "40"
+                },
+                {
+                  "label": "45%",
+                  "value": "45"
+                },
+                {
+                  "label": "50%",
+                  "value": "50"
+                },
+                {
+                  "label": "55%",
+                  "value": "55"
+                },
+                {
+                  "label": "60%",
+                  "value": "60"
+                },
+                {
+                  "label": "65%",
+                  "value": "65"
+                },
+                {
+                  "label": "70%",
+                  "value": "70"
+                },
+                {
+                  "label": "75%",
+                  "value": "75"
+                },
+                {
+                  "label": "80%",
+                  "value": "80"
+                },
+                {
+                  "label": "85%",
+                  "value": "85"
+                },
+                {
+                  "label": "90%",
+                  "value": "90"
+                },
+                {
+                  "label": "95%",
+                  "value": "95"
+                },
+                {
+                  "label": "100%",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_cardboard_x_shift",
+              "label": "settings_dekopon_cardboard_x_shift",
+              "type": "enum",
+              "default": "35",
+              "choices": [
+                {
+                  "label": "-100%",
+                  "value": "-100"
+                },
+                {
+                  "label": "-95%",
+                  "value": "-95"
+                },
+                {
+                  "label": "-90%",
+                  "value": "-90"
+                },
+                {
+                  "label": "-85%",
+                  "value": "-85"
+                },
+                {
+                  "label": "-80%",
+                  "value": "-80"
+                },
+                {
+                  "label": "-75%",
+                  "value": "-75"
+                },
+                {
+                  "label": "-70%",
+                  "value": "-70"
+                },
+                {
+                  "label": "-65%",
+                  "value": "-65"
+                },
+                {
+                  "label": "-60%",
+                  "value": "-60"
+                },
+                {
+                  "label": "-55%",
+                  "value": "-55"
+                },
+                {
+                  "label": "-50%",
+                  "value": "-50"
+                },
+                {
+                  "label": "-45%",
+                  "value": "-45"
+                },
+                {
+                  "label": "-40%",
+                  "value": "-40"
+                },
+                {
+                  "label": "-35%",
+                  "value": "-35"
+                },
+                {
+                  "label": "-30%",
+                  "value": "-30"
+                },
+                {
+                  "label": "-25%",
+                  "value": "-25"
+                },
+                {
+                  "label": "-20%",
+                  "value": "-20"
+                },
+                {
+                  "label": "-15%",
+                  "value": "-15"
+                },
+                {
+                  "label": "-10%",
+                  "value": "-10"
+                },
+                {
+                  "label": "-5%",
+                  "value": "-5"
+                },
+                {
+                  "label": "0%",
+                  "value": "0"
+                },
+                {
+                  "label": "5%",
+                  "value": "5"
+                },
+                {
+                  "label": "10%",
+                  "value": "10"
+                },
+                {
+                  "label": "15%",
+                  "value": "15"
+                },
+                {
+                  "label": "20%",
+                  "value": "20"
+                },
+                {
+                  "label": "25%",
+                  "value": "25"
+                },
+                {
+                  "label": "30%",
+                  "value": "30"
+                },
+                {
+                  "label": "35%",
+                  "value": "35"
+                },
+                {
+                  "label": "40%",
+                  "value": "40"
+                },
+                {
+                  "label": "45%",
+                  "value": "45"
+                },
+                {
+                  "label": "50%",
+                  "value": "50"
+                },
+                {
+                  "label": "55%",
+                  "value": "55"
+                },
+                {
+                  "label": "60%",
+                  "value": "60"
+                },
+                {
+                  "label": "65%",
+                  "value": "65"
+                },
+                {
+                  "label": "70%",
+                  "value": "70"
+                },
+                {
+                  "label": "75%",
+                  "value": "75"
+                },
+                {
+                  "label": "80%",
+                  "value": "80"
+                },
+                {
+                  "label": "85%",
+                  "value": "85"
+                },
+                {
+                  "label": "90%",
+                  "value": "90"
+                },
+                {
+                  "label": "95%",
+                  "value": "95"
+                },
+                {
+                  "label": "100%",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_cardboard_y_shift",
+              "label": "settings_dekopon_cardboard_y_shift",
+              "type": "enum",
+              "default": "0",
+              "choices": [
+                {
+                  "label": "-100%",
+                  "value": "-100"
+                },
+                {
+                  "label": "-95%",
+                  "value": "-95"
+                },
+                {
+                  "label": "-90%",
+                  "value": "-90"
+                },
+                {
+                  "label": "-85%",
+                  "value": "-85"
+                },
+                {
+                  "label": "-80%",
+                  "value": "-80"
+                },
+                {
+                  "label": "-75%",
+                  "value": "-75"
+                },
+                {
+                  "label": "-70%",
+                  "value": "-70"
+                },
+                {
+                  "label": "-65%",
+                  "value": "-65"
+                },
+                {
+                  "label": "-60%",
+                  "value": "-60"
+                },
+                {
+                  "label": "-55%",
+                  "value": "-55"
+                },
+                {
+                  "label": "-50%",
+                  "value": "-50"
+                },
+                {
+                  "label": "-45%",
+                  "value": "-45"
+                },
+                {
+                  "label": "-40%",
+                  "value": "-40"
+                },
+                {
+                  "label": "-35%",
+                  "value": "-35"
+                },
+                {
+                  "label": "-30%",
+                  "value": "-30"
+                },
+                {
+                  "label": "-25%",
+                  "value": "-25"
+                },
+                {
+                  "label": "-20%",
+                  "value": "-20"
+                },
+                {
+                  "label": "-15%",
+                  "value": "-15"
+                },
+                {
+                  "label": "-10%",
+                  "value": "-10"
+                },
+                {
+                  "label": "-5%",
+                  "value": "-5"
+                },
+                {
+                  "label": "0%",
+                  "value": "0"
+                },
+                {
+                  "label": "5%",
+                  "value": "5"
+                },
+                {
+                  "label": "10%",
+                  "value": "10"
+                },
+                {
+                  "label": "15%",
+                  "value": "15"
+                },
+                {
+                  "label": "20%",
+                  "value": "20"
+                },
+                {
+                  "label": "25%",
+                  "value": "25"
+                },
+                {
+                  "label": "30%",
+                  "value": "30"
+                },
+                {
+                  "label": "35%",
+                  "value": "35"
+                },
+                {
+                  "label": "40%",
+                  "value": "40"
+                },
+                {
+                  "label": "45%",
+                  "value": "45"
+                },
+                {
+                  "label": "50%",
+                  "value": "50"
+                },
+                {
+                  "label": "55%",
+                  "value": "55"
+                },
+                {
+                  "label": "60%",
+                  "value": "60"
+                },
+                {
+                  "label": "65%",
+                  "value": "65"
+                },
+                {
+                  "label": "70%",
+                  "value": "70"
+                },
+                {
+                  "label": "75%",
+                  "value": "75"
+                },
+                {
+                  "label": "80%",
+                  "value": "80"
+                },
+                {
+                  "label": "85%",
+                  "value": "85"
+                },
+                {
+                  "label": "90%",
+                  "value": "90"
+                },
+                {
+                  "label": "95%",
+                  "value": "95"
+                },
+                {
+                  "label": "100%",
+                  "value": "100"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "settings_dekopon_tab_audio",
+      "sections": [
+        {
+          "title": "settings_dekopon_section_output",
+          "options": [
+            {
+              "key": "dekopon_audio_emulation",
+              "label": "settings_dekopon_audio_emulation",
+              "type": "enum",
+              "default": "0",
+              "restart": true,
+              "choices": [
+                {
+                  "label": "HLE",
+                  "value": "0"
+                },
+                {
+                  "label": "LLE",
+                  "value": "1"
+                },
+                {
+                  "label": "LLE (multithreaded)",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_volume",
+              "label": "settings_dekopon_volume",
+              "type": "enum",
+              "default": "1",
+              "choices": [
+                {
+                  "label": "0%",
+                  "value": "0"
+                },
+                {
+                  "label": "10%",
+                  "value": "0.1"
+                },
+                {
+                  "label": "20%",
+                  "value": "0.2"
+                },
+                {
+                  "label": "30%",
+                  "value": "0.3"
+                },
+                {
+                  "label": "40%",
+                  "value": "0.4"
+                },
+                {
+                  "label": "50%",
+                  "value": "0.5"
+                },
+                {
+                  "label": "60%",
+                  "value": "0.6"
+                },
+                {
+                  "label": "70%",
+                  "value": "0.7"
+                },
+                {
+                  "label": "80%",
+                  "value": "0.8"
+                },
+                {
+                  "label": "90%",
+                  "value": "0.9"
+                },
+                {
+                  "label": "100%",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_simulate_headphones_plugged",
+              "label": "settings_dekopon_simulate_headphones_plugged",
+              "type": "bool",
+              "default": "false"
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_timing",
+          "options": [
+            {
+              "key": "dekopon_enable_audio_stretching",
+              "label": "settings_dekopon_enable_audio_stretching",
+              "type": "bool",
+              "default": "true"
+            },
+            {
+              "key": "dekopon_enable_realtime_audio",
+              "label": "settings_dekopon_enable_realtime_audio",
+              "type": "bool",
+              "default": "false"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "settings_dekopon_tab_layout",
+      "sections": [
+        {
+          "title": "settings_dekopon_section_screens",
+          "options": [
+            {
+              "key": "dekopon_screen_layout",
+              "label": "settings_dekopon_screen_layout",
+              "type": "enum",
+              "default": "0",
+              "choices": [
+                {
+                  "label": "Vertical stack",
+                  "value": "0"
+                },
+                {
+                  "label": "Side by Side",
+                  "value": "1"
+                },
+                {
+                  "label": "Large top, small bottom",
+                  "value": "2"
+                },
+                {
+                  "label": "Large bottom, small top",
+                  "value": "3"
+                },
+                {
+                  "label": "Top screen only",
+                  "value": "4"
+                },
+                {
+                  "label": "Bottom screen only",
+                  "value": "5"
+                },
+                {
+                  "label": "Vertical stack (rotate console)",
+                  "value": "6"
+                },
+                {
+                  "label": "Hybrid",
+                  "value": "7"
+                },
+                {
+                  "label": "Vertical stack (rotate console other way)",
+                  "value": "8"
+                },
+                {
+                  "label": "Bottom screen overlay",
+                  "value": "9"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_swap_screens",
+              "label": "settings_dekopon_swap_screens",
+              "type": "bool",
+              "default": "false"
+            },
+            {
+              "key": "dekopon_screen_gap",
+              "label": "settings_dekopon_screen_gap",
+              "type": "enum",
+              "default": "0",
+              "choices": [
+                {
+                  "label": "0 px",
+                  "value": "0"
+                },
+                {
+                  "label": "4 px",
+                  "value": "4"
+                },
+                {
+                  "label": "8 px",
+                  "value": "8"
+                },
+                {
+                  "label": "16 px",
+                  "value": "16"
+                },
+                {
+                  "label": "24 px",
+                  "value": "24"
+                },
+                {
+                  "label": "32 px",
+                  "value": "32"
+                },
+                {
+                  "label": "48 px",
+                  "value": "48"
+                },
+                {
+                  "label": "64 px",
+                  "value": "64"
+                },
+                {
+                  "label": "96 px",
+                  "value": "96"
+                },
+                {
+                  "label": "128 px",
+                  "value": "128"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_large_screen_proportion",
+              "label": "settings_dekopon_large_screen_proportion",
+              "type": "enum",
+              "default": "4",
+              "choices": [
+                {
+                  "label": "1.00x",
+                  "value": "1"
+                },
+                {
+                  "label": "1.50x",
+                  "value": "1.5"
+                },
+                {
+                  "label": "2.00x",
+                  "value": "2"
+                },
+                {
+                  "label": "2.50x",
+                  "value": "2.5"
+                },
+                {
+                  "label": "3.00x",
+                  "value": "3"
+                },
+                {
+                  "label": "3.50x",
+                  "value": "3.5"
+                },
+                {
+                  "label": "4.00x",
+                  "value": "4"
+                },
+                {
+                  "label": "4.50x",
+                  "value": "4.5"
+                },
+                {
+                  "label": "5.00x",
+                  "value": "5"
+                },
+                {
+                  "label": "5.50x",
+                  "value": "5.5"
+                },
+                {
+                  "label": "6.00x",
+                  "value": "6"
+                },
+                {
+                  "label": "6.50x",
+                  "value": "6.5"
+                },
+                {
+                  "label": "7.00x",
+                  "value": "7"
+                },
+                {
+                  "label": "7.50x",
+                  "value": "7.5"
+                },
+                {
+                  "label": "8.00x",
+                  "value": "8"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_stretch_fullscreen",
+              "label": "settings_dekopon_stretch_fullscreen",
+              "type": "bool",
+              "default": "false"
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_screen_overlay",
+          "options": [
+            {
+              "key": "dekopon_overlay_screen_position",
+              "label": "settings_dekopon_overlay_screen_position",
+              "type": "enum",
+              "default": "2",
+              "choices": [
+                {
+                  "label": "Top right",
+                  "value": "0"
+                },
+                {
+                  "label": "Middle right",
+                  "value": "1"
+                },
+                {
+                  "label": "Bottom right",
+                  "value": "2"
+                },
+                {
+                  "label": "Top left",
+                  "value": "3"
+                },
+                {
+                  "label": "Middle left",
+                  "value": "4"
+                },
+                {
+                  "label": "Bottom left",
+                  "value": "5"
+                },
+                {
+                  "label": "Top centre",
+                  "value": "6"
+                },
+                {
+                  "label": "Bottom centre",
+                  "value": "7"
+                }
+              ],
+              "depends_on": {
+                "key": "dekopon_screen_layout",
+                "value": "9"
+              }
+            },
+            {
+              "key": "dekopon_overlay_screen_size",
+              "label": "settings_dekopon_overlay_screen_size",
+              "type": "enum",
+              "default": "25",
+              "choices": [
+                {
+                  "label": "10%",
+                  "value": "10"
+                },
+                {
+                  "label": "15%",
+                  "value": "15"
+                },
+                {
+                  "label": "20%",
+                  "value": "20"
+                },
+                {
+                  "label": "25%",
+                  "value": "25"
+                },
+                {
+                  "label": "30%",
+                  "value": "30"
+                },
+                {
+                  "label": "35%",
+                  "value": "35"
+                },
+                {
+                  "label": "40%",
+                  "value": "40"
+                },
+                {
+                  "label": "45%",
+                  "value": "45"
+                },
+                {
+                  "label": "50%",
+                  "value": "50"
+                },
+                {
+                  "label": "55%",
+                  "value": "55"
+                },
+                {
+                  "label": "60%",
+                  "value": "60"
+                }
+              ],
+              "depends_on": {
+                "key": "dekopon_screen_layout",
+                "value": "9"
+              }
+            },
+            {
+              "key": "dekopon_overlay_screen_opacity",
+              "label": "settings_dekopon_overlay_screen_opacity",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "10%",
+                  "value": "10"
+                },
+                {
+                  "label": "20%",
+                  "value": "20"
+                },
+                {
+                  "label": "30%",
+                  "value": "30"
+                },
+                {
+                  "label": "40%",
+                  "value": "40"
+                },
+                {
+                  "label": "50%",
+                  "value": "50"
+                },
+                {
+                  "label": "60%",
+                  "value": "60"
+                },
+                {
+                  "label": "70%",
+                  "value": "70"
+                },
+                {
+                  "label": "80%",
+                  "value": "80"
+                },
+                {
+                  "label": "90%",
+                  "value": "90"
+                },
+                {
+                  "label": "100%",
+                  "value": "100"
+                }
+              ],
+              "depends_on": {
+                "key": "dekopon_screen_layout",
+                "value": "9"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "settings_dekopon_tab_controls",
+      "sections": [
+        {
+          "title": "settings_dekopon_section_buttons",
+          "options": [
+            {
+              "key": "dekopon_map_a",
+              "label": "settings_dekopon_map_a",
+              "type": "enum",
+              "default": "0",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_b",
+              "label": "settings_dekopon_map_b",
+              "type": "enum",
+              "default": "1",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_x",
+              "label": "settings_dekopon_map_x",
+              "type": "enum",
+              "default": "2",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_y",
+              "label": "settings_dekopon_map_y",
+              "type": "enum",
+              "default": "3",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_up",
+              "label": "settings_dekopon_map_up",
+              "type": "enum",
+              "default": "4",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_down",
+              "label": "settings_dekopon_map_down",
+              "type": "enum",
+              "default": "5",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_left",
+              "label": "settings_dekopon_map_left",
+              "type": "enum",
+              "default": "6",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_right",
+              "label": "settings_dekopon_map_right",
+              "type": "enum",
+              "default": "7",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_l",
+              "label": "settings_dekopon_map_l",
+              "type": "enum",
+              "default": "8",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_r",
+              "label": "settings_dekopon_map_r",
+              "type": "enum",
+              "default": "9",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_start",
+              "label": "settings_dekopon_map_start",
+              "type": "enum",
+              "default": "10",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_select",
+              "label": "settings_dekopon_map_select",
+              "type": "enum",
+              "default": "11",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_zl",
+              "label": "settings_dekopon_map_zl",
+              "type": "enum",
+              "default": "12",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_zr",
+              "label": "settings_dekopon_map_zr",
+              "type": "enum",
+              "default": "13",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_toggle_pointer",
+              "label": "settings_dekopon_map_toggle_pointer",
+              "type": "enum",
+              "default": "14",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_cycle_layout",
+              "label": "settings_dekopon_map_cycle_layout",
+              "type": "enum",
+              "default": "15",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_touch_tap",
+              "label": "settings_dekopon_map_touch_tap",
+              "type": "enum",
+              "default": "13",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_map_swap_screens",
+              "label": "settings_dekopon_map_swap_screens",
+              "type": "enum",
+              "default": "16",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "0"
+                },
+                {
+                  "label": "B",
+                  "value": "1"
+                },
+                {
+                  "label": "X",
+                  "value": "2"
+                },
+                {
+                  "label": "Y",
+                  "value": "3"
+                },
+                {
+                  "label": "Up",
+                  "value": "4"
+                },
+                {
+                  "label": "Down",
+                  "value": "5"
+                },
+                {
+                  "label": "Left",
+                  "value": "6"
+                },
+                {
+                  "label": "Right",
+                  "value": "7"
+                },
+                {
+                  "label": "L",
+                  "value": "8"
+                },
+                {
+                  "label": "R",
+                  "value": "9"
+                },
+                {
+                  "label": "Plus",
+                  "value": "10"
+                },
+                {
+                  "label": "Minus",
+                  "value": "11"
+                },
+                {
+                  "label": "ZL",
+                  "value": "12"
+                },
+                {
+                  "label": "ZR",
+                  "value": "13"
+                },
+                {
+                  "label": "Left stick press",
+                  "value": "14"
+                },
+                {
+                  "label": "Right stick press",
+                  "value": "15"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_touch_pointer",
+          "options": [
+            {
+              "key": "dekopon_pointer_source",
+              "label": "settings_dekopon_pointer_source",
+              "type": "enum",
+              "default": "0",
+              "choices": [
+                {
+                  "label": "Left stick",
+                  "value": "0"
+                },
+                {
+                  "label": "Gyro",
+                  "value": "1"
+                },
+                {
+                  "label": "Right stick",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_motion",
+          "options": [
+            {
+              "key": "dekopon_gyro_source",
+              "label": "settings_dekopon_gyro_source",
+              "type": "enum",
+              "default": "0",
+              "choices": [
+                {
+                  "label": "Automatic",
+                  "value": "0"
+                },
+                {
+                  "label": "Left controller",
+                  "value": "1"
+                },
+                {
+                  "label": "Right controller",
+                  "value": "2"
+                },
+                {
+                  "label": "Console",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_gyro_orientation",
+              "label": "settings_dekopon_gyro_orientation",
+              "type": "enum",
+              "default": "0",
+              "choices": [
+                {
+                  "label": "Horizontal",
+                  "value": "0"
+                },
+                {
+                  "label": "Vertical",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_gyro_sensitivity_x",
+              "label": "settings_dekopon_gyro_sensitivity_x",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "50%",
+                  "value": "50"
+                },
+                {
+                  "label": "75%",
+                  "value": "75"
+                },
+                {
+                  "label": "100%",
+                  "value": "100"
+                },
+                {
+                  "label": "125%",
+                  "value": "125"
+                },
+                {
+                  "label": "150%",
+                  "value": "150"
+                },
+                {
+                  "label": "175%",
+                  "value": "175"
+                },
+                {
+                  "label": "200%",
+                  "value": "200"
+                },
+                {
+                  "label": "225%",
+                  "value": "225"
+                },
+                {
+                  "label": "250%",
+                  "value": "250"
+                },
+                {
+                  "label": "275%",
+                  "value": "275"
+                },
+                {
+                  "label": "300%",
+                  "value": "300"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_gyro_sensitivity_y",
+              "label": "settings_dekopon_gyro_sensitivity_y",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "50%",
+                  "value": "50"
+                },
+                {
+                  "label": "75%",
+                  "value": "75"
+                },
+                {
+                  "label": "100%",
+                  "value": "100"
+                },
+                {
+                  "label": "125%",
+                  "value": "125"
+                },
+                {
+                  "label": "150%",
+                  "value": "150"
+                },
+                {
+                  "label": "175%",
+                  "value": "175"
+                },
+                {
+                  "label": "200%",
+                  "value": "200"
+                },
+                {
+                  "label": "225%",
+                  "value": "225"
+                },
+                {
+                  "label": "250%",
+                  "value": "250"
+                },
+                {
+                  "label": "275%",
+                  "value": "275"
+                },
+                {
+                  "label": "300%",
+                  "value": "300"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "settings_dekopon_tab_system",
+      "sections": [
+        {
+          "title": "settings_dekopon_section_console",
+          "options": [
+            {
+              "key": "dekopon_is_new_3ds",
+              "label": "settings_dekopon_is_new_3ds",
+              "type": "bool",
+              "default": "false",
+              "restart": true
+            },
+            {
+              "key": "dekopon_region_value",
+              "label": "settings_dekopon_region_value",
+              "type": "enum",
+              "default": "-1",
+              "restart": true,
+              "choices": [
+                {
+                  "label": "Auto",
+                  "value": "-1"
+                },
+                {
+                  "label": "Japan",
+                  "value": "0"
+                },
+                {
+                  "label": "USA",
+                  "value": "1"
+                },
+                {
+                  "label": "Europe",
+                  "value": "2"
+                },
+                {
+                  "label": "Australia",
+                  "value": "3"
+                },
+                {
+                  "label": "China",
+                  "value": "4"
+                },
+                {
+                  "label": "Korea",
+                  "value": "5"
+                },
+                {
+                  "label": "Taiwan",
+                  "value": "6"
+                }
+              ]
+            },
+            {
+              "key": "dekopon_apply_region_free_patch",
+              "label": "settings_dekopon_apply_region_free_patch",
+              "type": "bool",
+              "default": "true",
+              "restart": true
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_profile",
+          "options": [
+            {
+              "key": "dekopon_username",
+              "label": "settings_dekopon_username",
+              "type": "string",
+              "default": "",
+              "restart": true,
+              "max_length": 10
+            },
+            {
+              "key": "dekopon_language",
+              "label": "settings_dekopon_language",
+              "type": "enum",
+              "default": "1",
+              "restart": true,
+              "choices": [
+                {
+                  "label": "Japanese",
+                  "value": "0"
+                },
+                {
+                  "label": "English",
+                  "value": "1"
+                },
+                {
+                  "label": "French",
+                  "value": "2"
+                },
+                {
+                  "label": "German",
+                  "value": "3"
+                },
+                {
+                  "label": "Italian",
+                  "value": "4"
+                },
+                {
+                  "label": "Spanish",
+                  "value": "5"
+                },
+                {
+                  "label": "Simplified Chinese",
+                  "value": "6"
+                },
+                {
+                  "label": "Korean",
+                  "value": "7"
+                },
+                {
+                  "label": "Dutch",
+                  "value": "8"
+                },
+                {
+                  "label": "Portuguese",
+                  "value": "9"
+                },
+                {
+                  "label": "Russian",
+                  "value": "10"
+                },
+                {
+                  "label": "Traditional Chinese",
+                  "value": "11"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_clock",
+          "options": [
+            {
+              "key": "dekopon_init_clock",
+              "label": "settings_dekopon_init_clock",
+              "type": "enum",
+              "default": "0",
+              "restart": true,
+              "choices": [
+                {
+                  "label": "System time",
+                  "value": "0"
+                },
+                {
+                  "label": "Fixed time",
+                  "value": "1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_modules",
+          "options": [
+            {
+              "key": "dekopon_lle_applets",
+              "label": "settings_dekopon_lle_applets",
+              "type": "bool",
+              "default": "true",
+              "restart": true
+            },
+            {
+              "key": "dekopon_enable_required_online_lle_modules",
+              "label": "settings_dekopon_enable_required_online_lle_modules",
+              "type": "bool",
+              "default": "false",
+              "restart": true
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_plugins",
+          "options": [
+            {
+              "key": "dekopon_plugin_loader",
+              "label": "settings_dekopon_plugin_loader",
+              "type": "bool",
+              "default": "false",
+              "restart": true
+            },
+            {
+              "key": "dekopon_allow_plugin_loader",
+              "label": "settings_dekopon_allow_plugin_loader",
+              "type": "bool",
+              "default": "true",
+              "restart": true
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_sd_card",
+          "options": [
+            {
+              "key": "dekopon_use_virtual_sd",
+              "label": "settings_dekopon_use_virtual_sd",
+              "type": "bool",
+              "default": "true",
+              "restart": true
+            },
+            {
+              "key": "dekopon_async_fs_operations",
+              "label": "settings_dekopon_async_fs_operations",
+              "type": "bool",
+              "default": "true",
+              "restart": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "settings_dekopon_tab_advanced",
+      "sections": [
+        {
+          "title": "settings_dekopon_section_cpu",
+          "options": [
+            {
+              "key": "dekopon_use_cpu_jit",
+              "label": "settings_dekopon_use_cpu_jit",
+              "type": "bool",
+              "default": "true",
+              "restart": true
+            },
+            {
+              "key": "dekopon_fastmem",
+              "label": "settings_dekopon_fastmem",
+              "type": "bool",
+              "default": "false",
+              "restart": true
+            }
+          ]
+        },
+        {
+          "title": "settings_dekopon_section_speed_hacks",
+          "options": [
+            {
+              "key": "dekopon_movie_cpu_throttle",
+              "label": "settings_dekopon_movie_cpu_throttle",
+              "type": "bool",
+              "default": "false"
+            },
+            {
+              "key": "dekopon_movie_cpu_clock_percentage",
+              "label": "settings_dekopon_movie_cpu_clock_percentage",
+              "type": "enum",
+              "default": "45",
+              "choices": [
+                {
+                  "label": "25%",
+                  "value": "25"
+                },
+                {
+                  "label": "35%",
+                  "value": "35"
+                },
+                {
+                  "label": "45%",
+                  "value": "45"
+                },
+                {
+                  "label": "55%",
+                  "value": "55"
+                },
+                {
+                  "label": "65%",
+                  "value": "65"
+                },
+                {
+                  "label": "75%",
+                  "value": "75"
+                }
+              ],
+              "depends_on": {
+                "key": "dekopon_movie_cpu_throttle",
+                "value": "true"
+              }
+            },
+            {
+              "key": "dekopon_skip_slow_draw",
+              "label": "settings_dekopon_skip_slow_draw",
+              "type": "bool",
+              "default": "false"
+            },
+            {
+              "key": "dekopon_skip_texture_copy",
+              "label": "settings_dekopon_skip_texture_copy",
+              "type": "bool",
+              "default": "false"
+            },
+            {
+              "key": "dekopon_skip_cpu_write",
+              "label": "settings_dekopon_skip_cpu_write",
+              "type": "bool",
+              "default": "false"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1298 @@
+{
+ "Accurate Multiplication": [
+  "Genaue Multiplikation",
+  "Multiplicación precisa",
+  "Multiplication précise",
+  "正確な乗算",
+  "Multiplicação precisa",
+  "Точное умножение",
+  "精确乘法"
+ ],
+ "Anisotropic Filtering": [
+  "Anisotrope Filterung",
+  "Filtrado anisotrópico",
+  "Filtrage anisotrope",
+  "異方性フィルタリング",
+  "Filtragem anisotrópica",
+  "Анизотропная фильтрация",
+  "各向异性过滤"
+ ],
+ "GPU on its own thread": [
+  "GPU in eigenem Thread",
+  "GPU en su propio hilo",
+  "GPU sur son propre thread",
+  "GPUを別スレッドで実行",
+  "GPU em thread própria",
+  "GPU в отдельном потоке",
+  "GPU 独立线程"
+ ],
+ "Async Shaders": [
+  "Asynchrone Shader",
+  "Shaders asíncronos",
+  "Shaders asynchrones",
+  "非同期シェーダー",
+  "Shaders assíncronos",
+  "Асинхронные шейдеры",
+  "异步着色器"
+ ],
+ "Audio": [
+  "Audio",
+  "Audio",
+  "Audio",
+  "オーディオ",
+  "Áudio",
+  "Звук",
+  "音频"
+ ],
+ "Audio Stretching": [
+  "Audio-Stretching",
+  "Estiramiento de audio",
+  "Étirement audio",
+  "オーディオストレッチ",
+  "Esticamento de áudio",
+  "Растяжение звука",
+  "音频拉伸"
+ ],
+ "Boost mode (CPU 1785 MHz, GPU 768 MHz)": [
+  "Boost-Modus (CPU 1785 MHz, GPU 768 MHz)",
+  "Modo boost (CPU 1785 MHz, GPU 768 MHz)",
+  "Mode boost (CPU 1785 MHz, GPU 768 MHz)",
+  "ブーストモード（CPU 1785 MHz、GPU 768 MHz）",
+  "Modo boost (CPU 1785 MHz, GPU 768 MHz)",
+  "Режим ускорения (CPU 1785 МГц, GPU 768 МГц)",
+  "加速模式（CPU 1785 MHz，GPU 768 MHz）"
+ ],
+ "Button Mapping": [
+  "Tastenbelegung",
+  "Asignación de botones",
+  "Attribution des boutons",
+  "ボタン割り当て",
+  "Mapeamento de botões",
+  "Назначение кнопок",
+  "按键映射"
+ ],
+ "Compiling shaders": [
+  "Shader werden kompiliert",
+  "Compilando shaders",
+  "Compilation des shaders",
+  "シェーダーをコンパイル中",
+  "Compilando shaders",
+  "Компиляция шейдеров",
+  "正在编译着色器"
+ ],
+ "Console": [
+  "Konsole",
+  "Consola",
+  "Console",
+  "本体",
+  "Console",
+  "Консоль",
+  "主机"
+ ],
+ "Controls": [
+  "Steuerung",
+  "Controles",
+  "Commandes",
+  "操作",
+  "Controles",
+  "Управление",
+  "控制"
+ ],
+ "CPU": [
+  "CPU",
+  "CPU",
+  "CPU",
+  "CPU",
+  "CPU",
+  "ЦП",
+  "CPU"
+ ],
+ "CPU Clock": [
+  "CPU-Takt",
+  "Reloj de CPU",
+  "Fréquence CPU",
+  "CPUクロック",
+  "Clock da CPU",
+  "Частота ЦП",
+  "CPU 频率"
+ ],
+ "Custom Textures": [
+  "Eigene Texturen",
+  "Texturas personalizadas",
+  "Textures personnalisées",
+  "カスタムテクスチャ",
+  "Texturas personalizadas",
+  "Свои текстуры",
+  "自定义纹理"
+ ],
+ "Shader Cache": [
+  "Shader-Cache",
+  "Caché de shaders",
+  "Cache des shaders",
+  "シェーダーキャッシュ",
+  "Cache de shaders",
+  "Кэш шейдеров",
+  "着色器缓存"
+ ],
+ "Display Size": [
+  "Anzeigegröße",
+  "Tamaño de pantalla",
+  "Taille d'affichage",
+  "表示サイズ",
+  "Tamanho da exibição",
+  "Размер изображения",
+  "显示大小"
+ ],
+ "Docked Resolution": [
+  "Auflösung im Dock",
+  "Resolución en modo TV",
+  "Résolution en mode TV",
+  "TVモードの解像度",
+  "Resolução na TV",
+  "Разрешение в доке",
+  "底座模式分辨率"
+ ],
+ "Dump Textures": [
+  "Texturen ausgeben",
+  "Volcar texturas",
+  "Extraire les textures",
+  "テクスチャをダンプ",
+  "Extrair texturas",
+  "Сохранять текстуры",
+  "导出纹理"
+ ],
+ "Fastmem": [
+  "Fastmem",
+  "Fastmem",
+  "Fastmem",
+  "Fastmem",
+  "Fastmem",
+  "Fastmem",
+  "Fastmem"
+ ],
+ "Frame Generation (LSFG)": [
+  "Bildgenerierung (LSFG)",
+  "Generación de fotogramas (LSFG)",
+  "Génération d'images (LSFG)",
+  "フレーム生成 (LSFG)",
+  "Geração de quadros (LSFG)",
+  "Генерация кадров (LSFG)",
+  "帧生成 (LSFG)"
+ ],
+ "Flow Scale": [
+  "Fluss-Skalierung",
+  "Escala de flujo",
+  "Échelle du flux",
+  "フロースケール",
+  "Escala de fluxo",
+  "Масштаб потока",
+  "光流比例"
+ ],
+ "Frame generation needs Lossless.dll at": [
+  "Bildgenerierung braucht Lossless.dll unter",
+  "La generación de fotogramas necesita Lossless.dll en",
+  "La génération d'images nécessite Lossless.dll dans",
+  "フレーム生成にはLossless.dllが必要です:",
+  "A geração de quadros precisa do Lossless.dll em",
+  "Для генерации кадров нужен Lossless.dll в",
+  "帧生成需要 Lossless.dll，位置："
+ ],
+ "Multiplier": [
+  "Multiplikator",
+  "Multiplicador",
+  "Multiplicateur",
+  "倍率",
+  "Multiplicador",
+  "Множитель",
+  "倍数"
+ ],
+ "Performance Mode": [
+  "Leistungsmodus",
+  "Modo rendimiento",
+  "Mode performance",
+  "パフォーマンスモード",
+  "Modo desempenho",
+  "Режим производительности",
+  "性能模式"
+ ],
+ "Frame Generation": [
+  "Bildgenerierung",
+  "Generación de fotogramas",
+  "Génération d'images",
+  "フレーム生成",
+  "Geração de quadros",
+  "Генерация кадров",
+  "帧生成"
+ ],
+ "Graphics": [
+  "Grafik",
+  "Gráficos",
+  "Graphismes",
+  "グラフィック",
+  "Gráficos",
+  "Графика",
+  "图形"
+ ],
+ "Speed Hacks": [
+  "Geschwindigkeits-Hacks",
+  "Trucos de velocidad",
+  "Astuces de vitesse",
+  "高速化ハック",
+  "Truques de velocidade",
+  "Ускоряющие хаки",
+  "加速选项"
+ ],
+ "System Language": [
+  "Systemsprache",
+  "Idioma del sistema",
+  "Langue du système",
+  "本体の言語",
+  "Idioma do sistema",
+  "Язык системы",
+  "系统语言"
+ ],
+ "Large Screen Proportion": [
+  "Größe des großen Bildschirms",
+  "Proporción de pantalla grande",
+  "Proportion du grand écran",
+  "大画面の比率",
+  "Proporção da tela grande",
+  "Пропорция большого экрана",
+  "大屏比例"
+ ],
+ "Layout": [
+  "Anordnung",
+  "Disposición",
+  "Disposition",
+  "レイアウト",
+  "Layout",
+  "Раскладка",
+  "布局"
+ ],
+ "Screen Layout": [
+  "Bildschirmanordnung",
+  "Disposición de pantallas",
+  "Disposition des écrans",
+  "画面レイアウト",
+  "Layout das telas",
+  "Раскладка экранов",
+  "屏幕布局"
+ ],
+ "Macro 1 Button": [
+  "Makro-1-Taste",
+  "Botón de macro 1",
+  "Bouton de la macro 1",
+  "マクロ1のボタン",
+  "Botão da macro 1",
+  "Кнопка макроса 1",
+  "宏 1 按键"
+ ],
+ "Macro 1 Presses": [
+  "Makro 1 drückt",
+  "Macro 1 pulsa",
+  "La macro 1 appuie sur",
+  "マクロ1で押す",
+  "Macro 1 aperta",
+  "Макрос 1 нажимает",
+  "宏 1 按下"
+ ],
+ "Macro 1 Also Presses": [
+  "Makro 1 drückt auch",
+  "Macro 1 también pulsa",
+  "La macro 1 appuie aussi sur",
+  "マクロ1でさらに押す",
+  "Macro 1 também aperta",
+  "Макрос 1 также нажимает",
+  "宏 1 同时按下"
+ ],
+ "Macro 1 Swaps Screens": [
+  "Makro 1 tauscht Bildschirme",
+  "Macro 1 intercambia pantallas",
+  "La macro 1 inverse les écrans",
+  "マクロ1で画面を入れ替え",
+  "Macro 1 troca as telas",
+  "Макрос 1 меняет экраны",
+  "宏 1 交换屏幕"
+ ],
+ "Macro 2 Button": [
+  "Makro-2-Taste",
+  "Botón de macro 2",
+  "Bouton de la macro 2",
+  "マクロ2のボタン",
+  "Botão da macro 2",
+  "Кнопка макроса 2",
+  "宏 2 按键"
+ ],
+ "Macro 2 Presses": [
+  "Makro 2 drückt",
+  "Macro 2 pulsa",
+  "La macro 2 appuie sur",
+  "マクロ2で押す",
+  "Macro 2 aperta",
+  "Макрос 2 нажимает",
+  "宏 2 按下"
+ ],
+ "Macro 2 Also Presses": [
+  "Makro 2 drückt auch",
+  "Macro 2 también pulsa",
+  "La macro 2 appuie aussi sur",
+  "マクロ2でさらに押す",
+  "Macro 2 também aperta",
+  "Макрос 2 также нажимает",
+  "宏 2 同时按下"
+ ],
+ "Macro 2 Swaps Screens": [
+  "Makro 2 tauscht Bildschirme",
+  "Macro 2 intercambia pantallas",
+  "La macro 2 inverse les écrans",
+  "マクロ2で画面を入れ替え",
+  "Macro 2 troca as telas",
+  "Макрос 2 меняет экраны",
+  "宏 2 交换屏幕"
+ ],
+ "Macros": [
+  "Makros",
+  "Macros",
+  "Macros",
+  "マクロ",
+  "Macros",
+  "Макросы",
+  "宏"
+ ],
+ "A Button": [
+  "A-Taste",
+  "Botón A",
+  "Bouton A",
+  "Aボタン",
+  "Botão A",
+  "Кнопка A",
+  "A 键"
+ ],
+ "B Button": [
+  "B-Taste",
+  "Botón B",
+  "Bouton B",
+  "Bボタン",
+  "Botão B",
+  "Кнопка B",
+  "B 键"
+ ],
+ "C-Stick": [
+  "C-Stick",
+  "Palanca C",
+  "Stick C",
+  "Cスティック",
+  "C-Stick",
+  "C-стик",
+  "C 摇杆"
+ ],
+ "Circle Pad": [
+  "Schiebepad",
+  "Botón deslizante",
+  "Pad circulaire",
+  "スライドパッド",
+  "Circle Pad",
+  "Circle Pad",
+  "滑杆"
+ ],
+ "D-Pad Down": [
+  "Steuerkreuz unten",
+  "Cruceta abajo",
+  "Croix bas",
+  "十字ボタン下",
+  "Direcional para baixo",
+  "Крестовина вниз",
+  "十字键下"
+ ],
+ "HOME Button": [
+  "HOME-Taste",
+  "Botón HOME",
+  "Bouton HOME",
+  "HOMEボタン",
+  "Botão HOME",
+  "Кнопка HOME",
+  "HOME 键"
+ ],
+ "L Button": [
+  "L-Taste",
+  "Botón L",
+  "Bouton L",
+  "Lボタン",
+  "Botão L",
+  "Кнопка L",
+  "L 键"
+ ],
+ "D-Pad Left": [
+  "Steuerkreuz links",
+  "Cruceta izquierda",
+  "Croix gauche",
+  "十字ボタン左",
+  "Direcional para a esquerda",
+  "Крестовина влево",
+  "十字键左"
+ ],
+ "R Button": [
+  "R-Taste",
+  "Botón R",
+  "Bouton R",
+  "Rボタン",
+  "Botão R",
+  "Кнопка R",
+  "R 键"
+ ],
+ "D-Pad Right": [
+  "Steuerkreuz rechts",
+  "Cruceta derecha",
+  "Croix droite",
+  "十字ボタン右",
+  "Direcional para a direita",
+  "Крестовина вправо",
+  "十字键右"
+ ],
+ "SELECT": [
+  "SELECT",
+  "SELECT",
+  "SELECT",
+  "SELECT",
+  "SELECT",
+  "SELECT",
+  "SELECT"
+ ],
+ "START": [
+  "START",
+  "START",
+  "START",
+  "START",
+  "START",
+  "START",
+  "START"
+ ],
+ "D-Pad Up": [
+  "Steuerkreuz oben",
+  "Cruceta arriba",
+  "Croix haut",
+  "十字ボタン上",
+  "Direcional para cima",
+  "Крестовина вверх",
+  "十字键上"
+ ],
+ "X Button": [
+  "X-Taste",
+  "Botón X",
+  "Bouton X",
+  "Xボタン",
+  "Botão X",
+  "Кнопка X",
+  "X 键"
+ ],
+ "Y Button": [
+  "Y-Taste",
+  "Botón Y",
+  "Bouton Y",
+  "Yボタン",
+  "Botão Y",
+  "Кнопка Y",
+  "Y 键"
+ ],
+ "ZL Button": [
+  "ZL-Taste",
+  "Botón ZL",
+  "Bouton ZL",
+  "ZLボタン",
+  "Botão ZL",
+  "Кнопка ZL",
+  "ZL 键"
+ ],
+ "ZR Button": [
+  "ZR-Taste",
+  "Botón ZR",
+  "Bouton ZR",
+  "ZRボタン",
+  "Botão ZR",
+  "Кнопка ZR",
+  "ZR 键"
+ ],
+ "Microphone Input": [
+  "Mikrofoneingang",
+  "Entrada de micrófono",
+  "Entrée micro",
+  "マイク入力",
+  "Entrada do microfone",
+  "Вход микрофона",
+  "麦克风输入"
+ ],
+ "Microphone": [
+  "Mikrofon",
+  "Micrófono",
+  "Microphone",
+  "マイク",
+  "Microfone",
+  "Микрофон",
+  "麦克风"
+ ],
+ "CPU Clock During Movies": [
+  "CPU-Takt bei Videos",
+  "Reloj de CPU en vídeos",
+  "Horloge CPU pendant les vidéos",
+  "ムービー中のCPUクロック",
+  "Clock da CPU em vídeos",
+  "Частота CPU в видеороликах",
+  "影片时CPU频率"
+ ],
+ "Slower CPU During Movies": [
+  "Langsamere CPU bei Videos",
+  "CPU más lenta en vídeos",
+  "CPU ralenti pendant les vidéos",
+  "ムービー中はCPUを低速化",
+  "CPU mais lenta em vídeos",
+  "Замедлять CPU в видеороликах",
+  "播放影片时降低CPU"
+ ],
+ "New 3DS": [
+  "New 3DS",
+  "New 3DS",
+  "New 3DS",
+  "New 3DS",
+  "New 3DS",
+  "New 3DS",
+  "New 3DS"
+ ],
+ "Orientation": [
+  "Ausrichtung",
+  "Orientación",
+  "Orientation",
+  "向き",
+  "Orientação",
+  "Ориентация",
+  "方向"
+ ],
+ "Output": [
+  "Ausgabe",
+  "Salida",
+  "Sortie",
+  "出力",
+  "Saída",
+  "Вывод",
+  "输出"
+ ],
+ "System Region": [
+  "Systemregion",
+  "Región del sistema",
+  "Région du système",
+  "本体の地域",
+  "Região do sistema",
+  "Регион системы",
+  "系统区域"
+ ],
+ "Renderer": [
+  "Renderer",
+  "Renderizador",
+  "Rendu",
+  "レンダラー",
+  "Renderizador",
+  "Рендерер",
+  "渲染器"
+ ],
+ "Internal Resolution": [
+  "Interne Auflösung",
+  "Resolución interna",
+  "Résolution interne",
+  "内部解像度",
+  "Resolução interna",
+  "Внутреннее разрешение",
+  "内部分辨率"
+ ],
+ "Right Eye Rendering": [
+  "Rechtes Auge rendern",
+  "Renderizar ojo derecho",
+  "Rendu de l'œil droit",
+  "右目の描画",
+  "Renderizar olho direito",
+  "Рендер правого глаза",
+  "渲染右眼"
+ ],
+ "Screen": [
+  "Bildschirm",
+  "Pantalla",
+  "Écran",
+  "画面",
+  "Tela",
+  "Экран",
+  "屏幕"
+ ],
+ "Shader JIT": [
+  "Shader-JIT",
+  "JIT de shaders",
+  "JIT des shaders",
+  "シェーダーJIT",
+  "JIT de shaders",
+  "JIT шейдеров",
+  "着色器 JIT"
+ ],
+ "Show Shader Compiling": [
+  "Shader-Kompilierung anzeigen",
+  "Mostrar compilación de shaders",
+  "Afficher la compilation des shaders",
+  "シェーダーのコンパイルを表示",
+  "Mostrar compilação de shaders",
+  "Показывать компиляцию шейдеров",
+  "显示着色器编译"
+ ],
+ "Simulate 3DS GPU Timings": [
+  "3DS-GPU-Timings simulieren",
+  "Simular tiempos de GPU de 3DS",
+  "Simuler les délais du GPU 3DS",
+  "3DSのGPUタイミングを再現",
+  "Simular tempos da GPU do 3DS",
+  "Имитировать тайминги GPU 3DS",
+  "模拟 3DS GPU 时序"
+ ],
+ "Skip Small CPU Writes": [
+  "Kleine CPU-Schreibzugriffe überspringen",
+  "Omitir escrituras pequeñas de la CPU",
+  "Ignorer les petites écritures CPU",
+  "小さなCPU書き込みをスキップ",
+  "Pular pequenas escritas da CPU",
+  "Пропускать мелкие записи CPU",
+  "跳过小型CPU写入"
+ ],
+ "Skip Slow Draws": [
+  "Langsame Zeichnungen überspringen",
+  "Omitir dibujos lentos",
+  "Ignorer les rendus lents",
+  "遅い描画をスキップ",
+  "Pular desenhos lentos",
+  "Пропускать медленную отрисовку",
+  "跳过慢速绘制"
+ ],
+ "Skip Uncached Texture Copies": [
+  "Ungecachte Texturkopien überspringen",
+  "Omitir copias de texturas sin caché",
+  "Ignorer les copies de textures non cachées",
+  "未キャッシュのテクスチャコピーをスキップ",
+  "Pular cópias de texturas sem cache",
+  "Пропускать некэшированные копии текстур",
+  "跳过未缓存的纹理复制"
+ ],
+ "Sticks": [
+  "Sticks",
+  "Palancas",
+  "Sticks",
+  "スティック",
+  "Analógicos",
+  "Стики",
+  "摇杆"
+ ],
+ "Swap Screens": [
+  "Bildschirme tauschen",
+  "Intercambiar pantallas",
+  "Inverser les écrans",
+  "画面を入れ替え",
+  "Trocar telas",
+  "Поменять экраны",
+  "交换屏幕"
+ ],
+ "System": [
+  "System",
+  "Sistema",
+  "Système",
+  "システム",
+  "Sistema",
+  "Система",
+  "系统"
+ ],
+ "Texture Filter": [
+  "Texturfilter",
+  "Filtro de texturas",
+  "Filtre de textures",
+  "テクスチャフィルター",
+  "Filtro de texturas",
+  "Фильтр текстур",
+  "纹理过滤"
+ ],
+ "Texture Sampling": [
+  "Textur-Sampling",
+  "Muestreo de texturas",
+  "Échantillonnage des textures",
+  "テクスチャサンプリング",
+  "Amostragem de texturas",
+  "Выборка текстур",
+  "纹理采样"
+ ],
+ "Textures": [
+  "Texturen",
+  "Texturas",
+  "Textures",
+  "テクスチャ",
+  "Texturas",
+  "Текстуры",
+  "纹理"
+ ],
+ "Hardware Shaders": [
+  "Hardware-Shader",
+  "Shaders por hardware",
+  "Shaders matériels",
+  "ハードウェアシェーダー",
+  "Shaders por hardware",
+  "Аппаратные шейдеры",
+  "硬件着色器"
+ ],
+ "Virtual SD Card": [
+  "Virtuelle SD-Karte",
+  "Tarjeta SD virtual",
+  "Carte SD virtuelle",
+  "仮想SDカード",
+  "Cartão SD virtual",
+  "Виртуальная SD-карта",
+  "虚拟SD卡"
+ ],
+ "Username": [
+  "Benutzername",
+  "Nombre de usuario",
+  "Nom d'utilisateur",
+  "ユーザー名",
+  "Nome de usuário",
+  "Имя пользователя",
+  "用户名"
+ ],
+ "Australia": [
+  "Australien",
+  "Australia",
+  "Australie",
+  "オーストラリア",
+  "Austrália",
+  "Австралия",
+  "澳大利亚"
+ ],
+ "Auto": [
+  "Auto",
+  "Auto",
+  "Auto",
+  "自動",
+  "Auto",
+  "Авто",
+  "自动"
+ ],
+ "China": [
+  "China",
+  "China",
+  "Chine",
+  "中国",
+  "China",
+  "Китай",
+  "中国"
+ ],
+ "Default": [
+  "Standard",
+  "Predeterminada",
+  "Par défaut",
+  "標準",
+  "Padrão",
+  "Стандартная",
+  "默认"
+ ],
+ "Disabled": [
+  "Aus",
+  "Desactivado",
+  "Désactivé",
+  "なし",
+  "Desativado",
+  "Отключено",
+  "禁用"
+ ],
+ "Down": [
+  "Unten",
+  "Abajo",
+  "Bas",
+  "下",
+  "Baixo",
+  "Вниз",
+  "下"
+ ],
+ "Dutch": [
+  "Niederländisch",
+  "Neerlandés",
+  "Néerlandais",
+  "オランダ語",
+  "Holandês",
+  "Нидерландский",
+  "荷兰语"
+ ],
+ "English": [
+  "Englisch",
+  "Inglés",
+  "Anglais",
+  "英語",
+  "Inglês",
+  "Английский",
+  "英语"
+ ],
+ "Europe": [
+  "Europa",
+  "Europa",
+  "Europe",
+  "ヨーロッパ",
+  "Europa",
+  "Европа",
+  "欧洲"
+ ],
+ "Fill": [
+  "Füllen",
+  "Llenar",
+  "Remplir",
+  "フィット",
+  "Preencher",
+  "Заполнить",
+  "填充"
+ ],
+ "French": [
+  "Französisch",
+  "Francés",
+  "Français",
+  "フランス語",
+  "Francês",
+  "Французский",
+  "法语"
+ ],
+ "Game Controlled": [
+  "Vom Spiel gesteuert",
+  "Controlado por el juego",
+  "Contrôlé par le jeu",
+  "ゲームに従う",
+  "Controlado pelo jogo",
+  "Как в игре",
+  "由游戏控制"
+ ],
+ "German": [
+  "Deutsch",
+  "Alemán",
+  "Allemand",
+  "ドイツ語",
+  "Alemão",
+  "Немецкий",
+  "德语"
+ ],
+ "Horizontal": [
+  "Horizontal",
+  "Horizontal",
+  "Horizontale",
+  "横",
+  "Horizontal",
+  "Горизонтальная",
+  "横向"
+ ],
+ "Horizontal Inverted": [
+  "Horizontal, gedreht",
+  "Horizontal invertida",
+  "Horizontale inversée",
+  "横（反転）",
+  "Horizontal invertida",
+  "Горизонтальная, перевёрнутая",
+  "横向（反转）"
+ ],
+ "Hybrid": [
+  "Hybrid",
+  "Híbrida",
+  "Hybride",
+  "ハイブリッド",
+  "Híbrido",
+  "Гибридная",
+  "混合"
+ ],
+ "Hybrid Inverted": [
+  "Hybrid, gespiegelt",
+  "Híbrida invertida",
+  "Hybride inversé",
+  "ハイブリッド（反転）",
+  "Híbrido invertido",
+  "Гибридная, зеркально",
+  "混合（反转）"
+ ],
+ "Italian": [
+  "Italienisch",
+  "Italiano",
+  "Italien",
+  "イタリア語",
+  "Italiano",
+  "Итальянский",
+  "意大利语"
+ ],
+ "Japan": [
+  "Japan",
+  "Japón",
+  "Japon",
+  "日本",
+  "Japão",
+  "Япония",
+  "日本"
+ ],
+ "Japanese": [
+  "Japanisch",
+  "Japonés",
+  "Japonais",
+  "日本語",
+  "Japonês",
+  "Японский",
+  "日语"
+ ],
+ "Korea": [
+  "Korea",
+  "Corea",
+  "Corée",
+  "韓国",
+  "Coreia",
+  "Корея",
+  "韩国"
+ ],
+ "Korean": [
+  "Koreanisch",
+  "Coreano",
+  "Coréen",
+  "韓国語",
+  "Coreano",
+  "Корейский",
+  "韩语"
+ ],
+ "Large Screen": [
+  "Großer Bildschirm",
+  "Pantalla grande",
+  "Grand écran",
+  "大画面",
+  "Tela grande",
+  "Большой экран",
+  "大屏"
+ ],
+ "Large Screen Inverted": [
+  "Großer Bildschirm, gespiegelt",
+  "Pantalla grande invertida",
+  "Grand écran inversé",
+  "大画面（反転）",
+  "Tela grande invertida",
+  "Большой экран, зеркально",
+  "大屏（反转）"
+ ],
+ "Left": [
+  "Links",
+  "Izquierda",
+  "Gauche",
+  "左",
+  "Esquerda",
+  "Влево",
+  "左"
+ ],
+ "Left stick": [
+  "Linker Stick",
+  "Palanca izquierda",
+  "Stick gauche",
+  "左スティック",
+  "Analógico esquerdo",
+  "Левый стик",
+  "左摇杆"
+ ],
+ "Left stick press": [
+  "Linker Stick drücken",
+  "Pulsar palanca izquierda",
+  "Clic stick gauche",
+  "左スティック押し込み",
+  "Pressionar analógico esquerdo",
+  "Нажатие левого стика",
+  "按下左摇杆"
+ ],
+ "Linear": [
+  "Linear",
+  "Lineal",
+  "Linéaire",
+  "リニア",
+  "Linear",
+  "Линейная",
+  "线性"
+ ],
+ "Minus": [
+  "Minus",
+  "Menos",
+  "Moins",
+  "マイナス",
+  "Menos",
+  "Минус",
+  "减号"
+ ],
+ "Native": [
+  "Nativ",
+  "Nativa",
+  "Native",
+  "ネイティブ",
+  "Nativa",
+  "Родное",
+  "原生"
+ ],
+ "Nearest Neighbor": [
+  "Nächster Nachbar",
+  "Vecino más cercano",
+  "Plus proche voisin",
+  "ニアレストネイバー",
+  "Vizinho mais próximo",
+  "Ближайший сосед",
+  "最近邻"
+ ],
+ "None": [
+  "Keiner",
+  "Ninguno",
+  "Aucun",
+  "なし",
+  "Nenhum",
+  "Нет",
+  "无"
+ ],
+ "Off": [
+  "Aus",
+  "No",
+  "Non",
+  "オフ",
+  "Desligado",
+  "Выкл.",
+  "关"
+ ],
+ "Original": [
+  "Original",
+  "Original",
+  "Original",
+  "オリジナル",
+  "Original",
+  "Исходный",
+  "原始"
+ ],
+ "Plus": [
+  "Plus",
+  "Más",
+  "Plus",
+  "プラス",
+  "Mais",
+  "Плюс",
+  "加号"
+ ],
+ "Portuguese": [
+  "Portugiesisch",
+  "Portugués",
+  "Portugais",
+  "ポルトガル語",
+  "Português",
+  "Португальский",
+  "葡萄牙语"
+ ],
+ "Right": [
+  "Rechts",
+  "Derecha",
+  "Droite",
+  "右",
+  "Direita",
+  "Вправо",
+  "右"
+ ],
+ "Right stick": [
+  "Rechter Stick",
+  "Palanca derecha",
+  "Stick droit",
+  "右スティック",
+  "Analógico direito",
+  "Правый стик",
+  "右摇杆"
+ ],
+ "Right stick press": [
+  "Rechter Stick drücken",
+  "Pulsar palanca derecha",
+  "Clic stick droit",
+  "右スティック押し込み",
+  "Pressionar analógico direito",
+  "Нажатие правого стика",
+  "按下右摇杆"
+ ],
+ "Russian": [
+  "Russisch",
+  "Ruso",
+  "Russe",
+  "ロシア語",
+  "Russo",
+  "Русский",
+  "俄语"
+ ],
+ "Same as handheld": [
+  "Wie im Handheld-Modus",
+  "Igual que en portátil",
+  "Comme en mode portable",
+  "携帯モードと同じ",
+  "Igual ao portátil",
+  "Как в портативном",
+  "与掌机模式相同"
+ ],
+ "Side by Side": [
+  "Nebeneinander",
+  "Lado a lado",
+  "Côte à côte",
+  "横並び",
+  "Lado a lado",
+  "Рядом",
+  "并排"
+ ],
+ "Simplified Chinese": [
+  "Vereinfachtes Chinesisch",
+  "Chino simplificado",
+  "Chinois simplifié",
+  "簡体字中国語",
+  "Chinês simplificado",
+  "Упрощённый китайский",
+  "简体中文"
+ ],
+ "Single Screen": [
+  "Ein Bildschirm",
+  "Una pantalla",
+  "Écran unique",
+  "1画面",
+  "Tela única",
+  "Один экран",
+  "单屏"
+ ],
+ "Spanish": [
+  "Spanisch",
+  "Español",
+  "Espagnol",
+  "スペイン語",
+  "Espanhol",
+  "Испанский",
+  "西班牙语"
+ ],
+ "Static Noise": [
+  "Rauschen",
+  "Ruido estático",
+  "Bruit statique",
+  "ノイズ",
+  "Ruído estático",
+  "Шум",
+  "静态噪声"
+ ],
+ "Stretch": [
+  "Strecken",
+  "Estirar",
+  "Étirer",
+  "引き伸ばし",
+  "Esticar",
+  "Растянуть",
+  "拉伸"
+ ],
+ "Stretch Main Screen": [
+  "Hauptbildschirm strecken",
+  "Estirar pantalla principal",
+  "Étirer l'écran principal",
+  "メイン画面を引き伸ばし",
+  "Esticar tela principal",
+  "Растянуть основной экран",
+  "拉伸主屏幕"
+ ],
+ "Taiwan": [
+  "Taiwan",
+  "Taiwán",
+  "Taïwan",
+  "台湾",
+  "Taiwan",
+  "Тайвань",
+  "台湾"
+ ],
+ "Traditional Chinese": [
+  "Traditionelles Chinesisch",
+  "Chino tradicional",
+  "Chinois traditionnel",
+  "繁体字中国語",
+  "Chinês tradicional",
+  "Традиционный китайский",
+  "繁体中文"
+ ],
+ "Up": [
+  "Oben",
+  "Arriba",
+  "Haut",
+  "上",
+  "Cima",
+  "Вверх",
+  "上"
+ ],
+ "USA": [
+  "USA",
+  "EE. UU.",
+  "États-Unis",
+  "アメリカ",
+  "EUA",
+  "США",
+  "美国"
+ ],
+ "Vertical": [
+  "Vertikal",
+  "Vertical",
+  "Verticale",
+  "縦",
+  "Vertical",
+  "Вертикальная",
+  "纵向"
+ ],
+ "Vertical Inverted": [
+  "Vertikal, gedreht",
+  "Vertical invertida",
+  "Verticale inversée",
+  "縦（反転）",
+  "Vertical invertida",
+  "Вертикальная, перевёрнутая",
+  "纵向（反转）"
+ ],
+ "Volume": [
+  "Lautstärke",
+  "Volumen",
+  "Volume",
+  "音量",
+  "Volume",
+  "Громкость",
+  "音量"
+ ],
+ "VSync": [
+  "VSync",
+  "VSync",
+  "VSync",
+  "垂直同期",
+  "VSync",
+  "Вертикальная синхронизация",
+  "垂直同步"
+ ],
+ "Boost while loading the game": [
+  "Boost beim Laden des Spiels",
+  "Boost al cargar el juego",
+  "Boost au chargement du jeu",
+  "ゲーム読み込み時のブースト",
+  "Boost ao carregar o jogo",
+  "Ускорение при загрузке игры",
+  "加载游戏时加速"
+ ],
+ "On-screen info": [
+  "Bildschirmanzeige",
+  "Información en pantalla",
+  "Affichage à l'écran",
+  "画面表示",
+  "Informações na tela",
+  "Экранная информация",
+  "屏幕信息"
+ ],
+ "FPS counter": [
+  "FPS-Zähler",
+  "Contador de FPS",
+  "Compteur de FPS",
+  "FPSカウンター",
+  "Contador de FPS",
+  "Счётчик FPS",
+  "帧率计数器"
+ ],
+ "Rendered resolution": [
+  "Gerenderte Auflösung",
+  "Resolución renderizada",
+  "Résolution de rendu",
+  "描画解像度",
+  "Resolução renderizada",
+  "Разрешение рендеринга",
+  "渲染分辨率"
+ ]
+}

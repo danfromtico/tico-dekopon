@@ -64,3 +64,5 @@ GIT-TAG
 
 # verify-release.sh downloads
 verify/
+# tico module package (build_tico_module.sh)
+/build_tico/

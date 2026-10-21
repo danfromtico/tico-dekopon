@@ -212,6 +212,9 @@ endif()
 
 if (DEKOPON)
     add_subdirectory(citra_switch)
+    if (ENABLE_VULKAN)
+        add_subdirectory(tico)
+    endif()
 endif()
 
 if (ENABLE_LIBRETRO)

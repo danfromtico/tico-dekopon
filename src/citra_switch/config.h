@@ -5,9 +5,14 @@
 #pragma once
 
 #include <cstdint>
+#include <functional>
 #include <string>
 
 #include "citra_switch/updater.h"
+
+namespace Core {
+class System;
+}
 
 // Facade between the <switch.h> main() and the Azahar core.
 namespace SwitchFrontend {
@@ -164,6 +169,13 @@ bool BootRom(const std::string& rom_arg);
 // True while the emulation thread is running.
 bool IsRunning();
 
+// Runs `task` on the emulation thread before its next run loop slice, where the guest is
+// stopped and the core may be called directly.
+void RunOnEmuThread(std::function<void(Core::System&)> task);
+
+// The same, waiting for it to finish. False when the emulation stopped before it ran.
+bool RunOnEmuThreadAndWait(std::function<void(Core::System&)> task);
+
 // Freezes the guest between run loop slices, while the frontend keeps presenting the last frame.
 void SetEmulationPaused(bool paused);
 bool IsEmulationPaused();
@@ -173,6 +185,9 @@ void CycleScreenLayout();
 
 // Steps the screen layout by `delta` presets and applies it live.
 void StepScreenLayout(int delta);
+
+// Picks preset `index` (see GetScreenLayoutName) and applies it live.
+void SetScreenLayout(int index);
 
 // Swaps which 3DS screen occupies which slot of the current arrangement.
 void ToggleSwapScreens();

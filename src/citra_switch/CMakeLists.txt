@@ -2,8 +2,8 @@
 # And yes, this took as long as you'd expect it to.
 enable_language(ASM)
 
-# Dekopon frontend
-add_executable(citra_switch
+# The Dekopon frontend, shared by dekopon.nro and tico-dekopon.nro (src/tico).
+add_library(dekopon_frontend STATIC
     amiibo_convert.cpp
     amiibo_convert.h
     amiibo_reader.cpp
@@ -18,20 +18,11 @@ add_executable(citra_switch
     camera/image_decode.h
     camera/still_image_camera.cpp
     camera/still_image_camera.h
-    citra_switch.cpp
     config.cpp
     config.h
     emu_window.cpp
     emu_window.h
     emulation.cpp
-    harfbuzz_stubs.cpp
-    # The exception entry stub must be a strong symbol in the executable itself so the linker picks
-    # it over libnx's weak __libnx_exception_entry.
-    horizon_exception.cpp
-    horizon_exception_entry.S
-    horizon_exception_entry.h
-    horizon_libc_compat.cpp
-    horizon_sys_stubs.cpp
     input.cpp
     input.h
     menu.cpp
@@ -40,6 +31,8 @@ add_executable(citra_switch
     menu_data.h
     overlay_menu.cpp
     overlay_menu.h
+    pad_input.cpp
+    pad_input.h
     rail_icons.h
     save_manager.cpp
     save_manager.h
@@ -53,11 +46,29 @@ add_executable(citra_switch
     usb_storage.h
 )
 
+# Strong definitions that replace libnx's and newlib's. As objects they are always linked into
+# the executable, so they win over the weak __libnx_exception_entry and the libc gaps.
+add_library(dekopon_horizon_overrides OBJECT
+    harfbuzz_stubs.cpp
+    horizon_exception.cpp
+    horizon_exception.h
+    horizon_exception_entry.S
+    horizon_exception_entry.h
+    horizon_libc_compat.cpp
+    horizon_sys_stubs.cpp
+)
+target_link_libraries(dekopon_horizon_overrides PRIVATE citra_core citra_common)
+
+add_executable(citra_switch
+    citra_switch.cpp
+)
+target_link_libraries(citra_switch PRIVATE dekopon_frontend dekopon_horizon_overrides)
+
 # oaknut_horizon_jit is pulled in transitively via oaknut
-target_link_libraries(citra_switch PRIVATE citra_core citra_common inih usbhsfs)
+target_link_libraries(dekopon_frontend PUBLIC citra_core citra_common inih usbhsfs)
 
 if (ENABLE_LSFG)
-    target_link_libraries(citra_switch PRIVATE vulkan-headers)
+    target_link_libraries(dekopon_frontend PUBLIC vulkan-headers)
 endif()
 
 # The launcher draws with a libnx software framebuffer and renders text with FreeType
@@ -68,18 +79,18 @@ find_library(SWITCH_BZ2 bz2 REQUIRED)
 find_library(SWITCH_ZLIB z REQUIRED)
 find_path(SWITCH_CURL_INCLUDE_DIR curl/curl.h REQUIRED)
 find_library(SWITCH_CURL curl REQUIRED)
-target_include_directories(citra_switch PRIVATE ${SWITCH_FREETYPE_INCLUDE_DIR})
-target_include_directories(citra_switch PRIVATE ${SWITCH_CURL_INCLUDE_DIR})
-target_compile_definitions(citra_switch PRIVATE CURL_STATICLIB DEKOPON_VERSION="${DEKOPON_VERSION}")
+target_include_directories(dekopon_frontend PRIVATE ${SWITCH_FREETYPE_INCLUDE_DIR})
+target_include_directories(dekopon_frontend PRIVATE ${SWITCH_CURL_INCLUDE_DIR})
+target_compile_definitions(dekopon_frontend PRIVATE CURL_STATICLIB DEKOPON_VERSION="${DEKOPON_VERSION}")
 # Order matters for the static newlib link: freetype -> png -> bz2 -> z.
-target_link_libraries(citra_switch PRIVATE
+target_link_libraries(dekopon_frontend PUBLIC
     ${SWITCH_FREETYPE} ${SWITCH_PNG} ${SWITCH_BZ2} ${SWITCH_ZLIB}
     ${SWITCH_CURL} ${SWITCH_ZLIB} json-headers cryptopp)
 
 find_path(SWITCH_JPEG_INCLUDE_DIR jpeglib.h REQUIRED)
 find_library(SWITCH_JPEG jpeg REQUIRED)
-target_include_directories(citra_switch PRIVATE ${SWITCH_JPEG_INCLUDE_DIR})
-target_link_libraries(citra_switch PRIVATE ${SWITCH_JPEG})
+target_include_directories(dekopon_frontend PRIVATE ${SWITCH_JPEG_INCLUDE_DIR})
+target_link_libraries(dekopon_frontend PUBLIC ${SWITCH_JPEG})
 
 # The GLES bring-up path pulls the switch-mesa EGL/GLES driver.
 if (ENABLE_OPENGL)
@@ -90,17 +101,17 @@ if (ENABLE_OPENGL)
     find_library(SWITCH_GLAPI glapi REQUIRED)
     find_library(SWITCH_DRM_NOUVEAU drm_nouveau REQUIRED)
 
-    target_include_directories(citra_switch PRIVATE ${SWITCH_GL_INCLUDE_DIR})
+    target_include_directories(dekopon_frontend PRIVATE ${SWITCH_GL_INCLUDE_DIR})
     # Prepend our externals/glad so the GLES2 loader is found
-    target_include_directories(citra_switch BEFORE PRIVATE
+    target_include_directories(dekopon_frontend BEFORE PRIVATE
         $<TARGET_PROPERTY:glad,INTERFACE_INCLUDE_DIRECTORIES>)
-    target_link_libraries(citra_switch PRIVATE glad
+    target_link_libraries(dekopon_frontend PUBLIC glad
         ${SWITCH_EGL} ${SWITCH_GLESV2} ${SWITCH_GLAPI} ${SWITCH_DRM_NOUVEAU})
 endif()
 
 # Vulkan provided by mesa-switch (NVK)
 if (ENABLE_VULKAN)
-    target_link_libraries(citra_switch PRIVATE mesa_switch_vulkan)
+    target_link_libraries(dekopon_frontend PUBLIC mesa_switch_vulkan)
 endif()
 
 nx_generate_nacp(OUTPUT dekopon.nacp

@@ -9,8 +9,13 @@
 #include <cstddef>
 #include <cstdint>
 #include <ctime>
+#include <functional>
+#include <future>
+#include <memory>
+#include <mutex>
 #include <string>
 #include <thread>
+#include <vector>
 #include <fmt/format.h>
 
 #include "citra_switch/applets/swkbd.h"
@@ -52,6 +57,42 @@ std::atomic<bool> s_movie_throttle_enabled{false};
 std::atomic<std::int32_t> s_movie_throttle_clock_percentage{45};
 std::atomic<bool> s_movie_playback_detected{false};
 std::atomic<bool> s_movie_throttle_active{false};
+
+// Work the frontend hands the emulation thread, run between run loop slices.
+struct EmuTask {
+    std::function<void(Core::System&)> run;
+    std::shared_ptr<std::promise<bool>> done;
+};
+std::mutex s_emu_tasks_mutex;
+std::vector<EmuTask> s_emu_tasks;
+
+void RunEmuTasks(Core::System& system) {
+    std::vector<EmuTask> tasks;
+    {
+        std::scoped_lock lock{s_emu_tasks_mutex};
+        tasks.swap(s_emu_tasks);
+    }
+    for (EmuTask& task : tasks) {
+        task.run(system);
+        if (task.done) {
+            task.done->set_value(true);
+        }
+    }
+}
+
+// Tasks still queued when the emulation stops never run.
+void DropEmuTasks() {
+    std::vector<EmuTask> tasks;
+    {
+        std::scoped_lock lock{s_emu_tasks_mutex};
+        tasks.swap(s_emu_tasks);
+    }
+    for (EmuTask& task : tasks) {
+        if (task.done) {
+            task.done->set_value(false);
+        }
+    }
+}
 
 // How long the paused loop waits between repaints.
 constexpr auto kPausedFrameInterval = std::chrono::milliseconds(8);
@@ -292,6 +333,7 @@ void EmuThread(std::string path) {
 
     LOG_INFO(Frontend, "Emulation started (program id {:016X})", program_id);
     while (!s_stop) {
+        RunEmuTasks(system);
         if (s_layout_update_pending.exchange(false, std::memory_order_acq_rel)) {
             system.GPU().UpdateCurrentFramebufferLayout();
             Core::PerfStats::game_frames_updated = true;
@@ -325,6 +367,7 @@ void EmuThread(std::string path) {
         break;
     }
 
+    DropEmuTasks();
     window->DoneCurrent();
     s_stop = true;
 }
@@ -384,6 +427,30 @@ bool IsRunning() {
     return !s_stop;
 }
 
+void RunOnEmuThread(std::function<void(Core::System&)> task) {
+    std::scoped_lock lock{s_emu_tasks_mutex};
+    s_emu_tasks.push_back({std::move(task), nullptr});
+}
+
+bool RunOnEmuThreadAndWait(std::function<void(Core::System&)> task) {
+    if (s_stop) {
+        return false;
+    }
+    auto done = std::make_shared<std::promise<bool>>();
+    std::future<bool> result = done->get_future();
+    {
+        std::scoped_lock lock{s_emu_tasks_mutex};
+        s_emu_tasks.push_back({std::move(task), std::move(done)});
+    }
+    // The thread may have stopped between the check and the push.
+    while (result.wait_for(std::chrono::milliseconds(50)) != std::future_status::ready) {
+        if (s_stop) {
+            DropEmuTasks();
+        }
+    }
+    return result.get();
+}
+
 void SetEmulationPaused(bool paused) {
     s_paused.store(paused, std::memory_order_relaxed);
 }
@@ -402,6 +469,14 @@ void StepScreenLayout(int delta) {
     s_layout_index = static_cast<std::size_t>(((static_cast<int>(s_layout_index) + delta) % count +
                                                count) %
                                               count);
+    ApplyCurrentLayout();
+}
+
+void SetScreenLayout(int index) {
+    if (index < 0 || index >= static_cast<int>(s_layout_presets.size())) {
+        return;
+    }
+    s_layout_index = static_cast<std::size_t>(index);
     ApplyCurrentLayout();
 }
 

@@ -45,6 +45,35 @@ struct OverlayDraw {
 
 constexpr u32 kOverlayCount = 4;
 
+// The swapchain image a frontend overlay draws over, once the frame and the renderer's own
+// overlays are in it.
+struct PresentOverlayTarget {
+    vk::Instance instance;
+    vk::PhysicalDevice physical_device;
+    vk::Device device;
+    vk::Queue queue;
+    u32 queue_family_index;
+    u32 image_count;
+    std::mutex* submit_mutex;
+    vk::CommandBuffer cmdbuf;
+    vk::Image image;
+    vk::Extent2D extent;
+    vk::Format format;
+    // The image's layout now. The overlay leaves it in ePresentSrcKHR.
+    vk::ImageLayout layout;
+};
+
+// A frontend overlay composited on the present thread. Frames where wants_draw returns false
+// are presented exactly as they are without one.
+struct PresentOverlayHooks {
+    bool (*wants_draw)();
+    void (*draw)(const PresentOverlayTarget& target);
+    // Before the swapchain images are destroyed, with the queue idle.
+    void (*reset)();
+};
+
+void SetPresentOverlay(const PresentOverlayHooks* hooks);
+
 #ifdef ENABLE_LSFG
 
 constexpr u64 kOverlayBufferSize = 256 * 1024;
@@ -149,6 +178,12 @@ private:
     void SubmitAndPresent(vk::CommandBuffer cmdbuf, vk::Semaphore render_ready, vk::Fence fence);
 
     void CopyToSwapchain(Frame* frame);
+
+    /// The frontend overlay to draw over this present, or nullptr.
+    const PresentOverlayHooks* FrontendOverlay() const;
+
+    void RecordFrontendOverlay(const PresentOverlayHooks& hooks, vk::CommandBuffer cmdbuf,
+                               vk::ImageLayout layout);
 
 #ifdef ENABLE_LSFG
     void CreateOverlayBuffer(Frame& frame);

@@ -26,6 +26,8 @@ namespace Vulkan {
 
 namespace {
 
+std::atomic<const PresentOverlayHooks*> g_present_overlay{nullptr};
+
 bool CanBlitToSwapchain(const vk::PhysicalDevice& physical_device, vk::Format format) {
     const vk::FormatProperties props{physical_device.getFormatProperties(format)};
     return static_cast<bool>(props.optimalTilingFeatures & vk::FormatFeatureFlagBits::eBlitDst);
@@ -101,6 +103,10 @@ bool CanBlitToSwapchain(const vk::PhysicalDevice& physical_device, vk::Format fo
 }
 
 } // Anonymous namespace
+
+void SetPresentOverlay(const PresentOverlayHooks* hooks) {
+    g_present_overlay.store(hooks, std::memory_order_release);
+}
 
 PresentWindow::PresentWindow(Frontend::EmuWindow& emu_window_, const Instance& instance_,
                              Scheduler& scheduler_, bool low_refresh_rate_)
@@ -689,9 +695,16 @@ bool PresentWindow::CopyToSwapchainGenerated(Frame* frame) {
         cmdbuf.begin(vk::CommandBufferBeginInfo{
             .flags = vk::CommandBufferUsageFlagBits::eOneTimeSubmit,
         });
-        RecordBlitToSwapchain(cmdbuf, source, swapchain.Image(), overlays);
+        const PresentOverlayHooks* frontend_overlay = FrontendOverlay();
+        RecordBlitToSwapchain(cmdbuf, source, swapchain.Image(),
+                              overlays || frontend_overlay);
         if (overlays) {
             RecordOverlayPass(cmdbuf, frame);
+        }
+        if (frontend_overlay) {
+            RecordFrontendOverlay(*frontend_overlay, cmdbuf,
+                                  overlays ? vk::ImageLayout::ePresentSrcKHR
+                                           : vk::ImageLayout::eGeneral);
         }
         cmdbuf.end();
         SubmitAndPresent(cmdbuf, VK_NULL_HANDLE, fence);
@@ -734,6 +747,10 @@ void PresentWindow::RecreateSwapchain(u32 width, u32 height) {
 #endif
     std::scoped_lock submit_lock{scheduler.submit_mutex};
     graphics_queue.waitIdle();
+    if (const PresentOverlayHooks* hooks = g_present_overlay.load(std::memory_order_acquire);
+        hooks && hooks->reset) {
+        hooks->reset();
+    }
 #ifdef __SWITCH__
     swapchain.Destroy();
     if (!Common::Horizon::SetNativeWindowSize(emu_window.GetWindowInfo().render_surface, width,
@@ -869,6 +886,29 @@ void PresentWindow::SubmitAndPresent(vk::CommandBuffer cmdbuf, vk::Semaphore ren
     swapchain.Present();
 }
 
+const PresentOverlayHooks* PresentWindow::FrontendOverlay() const {
+    const PresentOverlayHooks* hooks = g_present_overlay.load(std::memory_order_acquire);
+    return hooks && hooks->wants_draw() ? hooks : nullptr;
+}
+
+void PresentWindow::RecordFrontendOverlay(const PresentOverlayHooks& hooks,
+                                          vk::CommandBuffer cmdbuf, vk::ImageLayout layout) {
+    hooks.draw(PresentOverlayTarget{
+        .instance = instance.GetInstance(),
+        .physical_device = instance.GetPhysicalDevice(),
+        .device = instance.GetDevice(),
+        .queue = graphics_queue,
+        .queue_family_index = instance.GetGraphicsQueueFamilyIndex(),
+        .image_count = swapchain.GetImageCount(),
+        .submit_mutex = &scheduler.submit_mutex,
+        .cmdbuf = cmdbuf,
+        .image = swapchain.Image(),
+        .extent = swapchain.GetExtent(),
+        .format = swapchain.GetSurfaceFormat().format,
+        .layout = layout,
+    });
+}
+
 void PresentWindow::CopyToSwapchain(Frame* frame) {
 #ifndef ANDROID
     const bool use_vsync = Settings::values.use_vsync.GetValue();
@@ -895,6 +935,7 @@ void PresentWindow::CopyToSwapchain(Frame* frame) {
 #ifdef ENABLE_LSFG
     overlays = frame->overlays_deferred && overlay_recorder != nullptr && frame->overlay_buffer;
 #endif
+    const PresentOverlayHooks* frontend_overlay = FrontendOverlay();
 
     const vk::CommandBuffer cmdbuf = frame->cmdbuf;
     cmdbuf.begin(vk::CommandBufferBeginInfo{
@@ -909,12 +950,17 @@ void PresentWindow::CopyToSwapchain(Frame* frame) {
                               .access = vk::AccessFlagBits::eColorAttachmentWrite,
                               .stage = vk::PipelineStageFlagBits::eColorAttachmentOutput,
                           },
-                          swapchain.Image(), overlays);
+                          swapchain.Image(), overlays || frontend_overlay);
 #ifdef ENABLE_LSFG
     if (overlays) {
         RecordOverlayPass(cmdbuf, frame);
     }
 #endif
+    if (frontend_overlay) {
+        RecordFrontendOverlay(*frontend_overlay, cmdbuf,
+                              overlays ? vk::ImageLayout::ePresentSrcKHR
+                                       : vk::ImageLayout::eGeneral);
+    }
     cmdbuf.end();
 
     SubmitAndPresent(cmdbuf, frame->render_ready, frame->present_done);

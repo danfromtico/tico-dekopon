@@ -68,12 +68,26 @@ std::size_t GetCompileWorkerCount() {
 
 std::size_t GetShaderWorkerCount() {
 #ifdef __SWITCH__
-    // Two on core 0, so one long shader compile does not stall the rest of the queue.
+    // Two, so one long shader compile does not stall the rest of the queue.
     return 2;
 #else
     return GetCompileWorkerCount();
 #endif
 }
+
+#ifdef __SWITCH__
+// One worker on the system's core when the process is granted it, the other on core 0, so the
+// second compile no longer takes time from the main loop and the GPU thread there. Both on
+// core 0 otherwise.
+std::vector<std::uint32_t> GetShaderWorkerCores() {
+    if (Common::Horizon::IsCoreAvailable(Common::Horizon::CoreSystem)) {
+        LOG_INFO(Render_Vulkan, "Shader workers run on cores {} and {}",
+                 Common::Horizon::CoreSystem, Common::Horizon::CoreFrontend);
+        return {Common::Horizon::CoreSystem, Common::Horizon::CoreFrontend};
+    }
+    return {Common::Horizon::CoreFrontend};
+}
+#endif
 
 #ifdef __SWITCH__
 Common::ThreadPriority GetCompileWorkerPriority(bool async_shader_compilation) {
@@ -120,7 +134,7 @@ PipelineCache::PipelineCache(const Instance& instance_, Scheduler& scheduler_,
       shader_workers{GetShaderWorkerCount(),
                      "Shader workers",
                      {},
-                     {Common::Horizon::CoreFrontend},
+                     GetShaderWorkerCores(),
                      GetCompileWorkerPriority(async_shader_compilation)},
 #else
       pipeline_workers{num_worker_threads, "Pipeline workers"},

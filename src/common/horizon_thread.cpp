@@ -33,6 +33,13 @@ bool TryPin(std::uint32_t core_id) {
 }
 } // namespace
 
+bool IsCoreAvailable(std::uint32_t core_id) {
+    u64 allowed_cores{};
+    return core_id < 64 &&
+           R_SUCCEEDED(svcGetInfo(&allowed_cores, InfoType_CoreMask, CUR_PROCESS_HANDLE, 0)) &&
+           (allowed_cores & (1ULL << core_id)) != 0;
+}
+
 bool PinCurrentThread(std::uint32_t core_id) {
     return TryPin(core_id);
 }
@@ -91,6 +98,10 @@ std::uint64_t GetTotalMemorySize() {
 }
 
 #else
+
+bool IsCoreAvailable(std::uint32_t) {
+    return false;
+}
 
 bool PinCurrentThread(std::uint32_t) {
     return false;

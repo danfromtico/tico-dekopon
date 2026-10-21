@@ -12,6 +12,12 @@ namespace Common::Horizon {
 inline constexpr std::uint32_t CoreFrontend = 0; // Main thread, GPU support, shader compilation.
 inline constexpr std::uint32_t CoreAudio = 1;    // Audio output.
 inline constexpr std::uint32_t CoreEmu = 2;      // Emulation thread.
+// The system's core. Some launches grant it to the process too (see IsCoreAvailable); it is
+// shared with the system, so only background work goes there.
+inline constexpr std::uint32_t CoreSystem = 3;
+
+// Whether the process may run threads on `core_id`.
+bool IsCoreAvailable(std::uint32_t core_id);
 
 // Pins the calling thread to `core_id`.
 bool PinCurrentThread(std::uint32_t core_id);

@@ -66,6 +66,15 @@ std::size_t GetCompileWorkerCount() {
 #endif
 }
 
+std::size_t GetShaderWorkerCount() {
+#ifdef __SWITCH__
+    // Two on core 0, so one long shader compile does not stall the rest of the queue.
+    return 2;
+#else
+    return GetCompileWorkerCount();
+#endif
+}
+
 #ifdef __SWITCH__
 Common::ThreadPriority GetCompileWorkerPriority(bool async_shader_compilation) {
     return async_shader_compilation ? Common::ThreadPriority::Low
@@ -108,7 +117,7 @@ PipelineCache::PipelineCache(const Instance& instance_, Scheduler& scheduler_,
                        {},
                        {Common::Horizon::CoreAudio},
                        GetCompileWorkerPriority(async_shader_compilation)},
-      shader_workers{num_worker_threads,
+      shader_workers{GetShaderWorkerCount(),
                      "Shader workers",
                      {},
                      {Common::Horizon::CoreFrontend},

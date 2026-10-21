@@ -6,10 +6,12 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <cstring>
 #include <unistd.h>
 
 #include <switch.h>
 
+#include "horizon_exception.h"
 #include "horizon_exception_entry.h"
 
 // The stub in horizon_exception_entry.S builds a ThreadExceptionDump from fixed offsets. If libnx
@@ -34,7 +36,11 @@ namespace {
 constexpr std::uint32_t ESR_EC_DATA_ABORT_LOWER = 0x24;
 constexpr std::uint32_t ESR_EC_DATA_ABORT_SAME = 0x25;
 
-constexpr const char* CRASH_PATH = "/switch/dekopon/log/crash.txt";
+constexpr const char* CRASH_FILE = "crash.txt";
+
+// The log folder and crash.txt in it, as paths on the SD card's filesystem (no "sdmc:").
+char s_crash_dir[256] = "/switch/dekopon/log/";
+char s_crash_path[sizeof(s_crash_dir) + 16] = "/switch/dekopon/log/crash.txt";
 
 char s_report[8192];
 std::size_t s_report_len;
@@ -113,22 +119,48 @@ void WriteReportToSd() {
         return;
     }
 
-    fsFsCreateDirectory(sdmc, "/switch");
-    fsFsCreateDirectory(sdmc, "/switch/dekopon");
-    fsFsCreateDirectory(sdmc, "/switch/dekopon/log");
-    fsFsDeleteFile(sdmc, CRASH_PATH);
-    if (R_FAILED(fsFsCreateFile(sdmc, CRASH_PATH, static_cast<s64>(s_report_len), 0))) {
+    // each folder on the way, as the log folder may not be there yet
+    char folder[sizeof(s_crash_dir)];
+    for (std::size_t i = 1; s_crash_dir[i] != '\0' && i < sizeof(folder); ++i) {
+        if (s_crash_dir[i] == '/') {
+            for (std::size_t j = 0; j < i; ++j) {
+                folder[j] = s_crash_dir[j];
+            }
+            folder[i] = '\0';
+            fsFsCreateDirectory(sdmc, folder);
+        }
+    }
+    fsFsDeleteFile(sdmc, s_crash_path);
+    if (R_FAILED(fsFsCreateFile(sdmc, s_crash_path, static_cast<s64>(s_report_len), 0))) {
         return;
     }
 
     FsFile file;
-    if (R_FAILED(fsFsOpenFile(sdmc, CRASH_PATH, FsOpenMode_Write, &file))) {
+    if (R_FAILED(fsFsOpenFile(sdmc, s_crash_path, FsOpenMode_Write, &file))) {
         return;
     }
     fsFileWrite(&file, 0, s_report, s_report_len, FsWriteOption_Flush);
     fsFileClose(&file);
 }
 }  // namespace
+
+void SetCrashLogDirectory(const char* directory) {
+    // "sdmc:/a/b/" -> "/a/b/"
+    if (const char* colon = std::strchr(directory, ':')) {
+        directory = colon + 1;
+    }
+    const std::size_t length = std::strlen(directory);
+    if (length == 0 || length + 1 >= sizeof(s_crash_dir)) {
+        return;
+    }
+    std::strcpy(s_crash_dir, directory);
+    if (s_crash_dir[length - 1] != '/') {
+        s_crash_dir[length] = '/';
+        s_crash_dir[length + 1] = '\0';
+    }
+    std::strcpy(s_crash_path, s_crash_dir);
+    std::strcat(s_crash_path, CRASH_FILE);
+}
 
 extern "C" bool HorizonExceptionDispatch(ThreadExceptionDump* ctx) {
     if (!threadExceptionIsAArch64(ctx)) {

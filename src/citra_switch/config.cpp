@@ -20,6 +20,7 @@
 #include "common/string_util.h"
 #include "citra_switch/camera/still_image_camera.h"
 #include "citra_switch/config.h"
+#include "citra_switch/horizon_exception.h"
 #include "citra_switch/settings_registry.h"
 #include "citra_switch/input.h"
 #include "citra_switch/overlay_menu.h"
@@ -344,11 +345,12 @@ void ApplyPreset(SwitchFrontend::SettingsPreset preset) {
 
 namespace SwitchFrontend {
 
-int Bootstrap() {
+int Bootstrap(const std::string& user_dir) {
     // Resolve the dekopon directory and create its standard subdirectories.
-    FileUtil::SetUserPath(ReadUserDirPointer());
+    FileUtil::SetUserPath(user_dir.empty() ? ReadUserDirPointer() : WithTrailingSlash(user_dir));
     s_active_user_dir = FileUtil::GetUserPath(FileUtil::UserPath::UserDir);
     s_paths.user_dir = s_active_user_dir;
+    SetCrashLogDirectory(FileUtil::GetUserPath(FileUtil::UserPath::LogDir).c_str());
     FileUtil::CreateFullPath(s_active_user_dir + "amiibo/");
     FileUtil::CreateFullPath(s_active_user_dir + "camera/");
 

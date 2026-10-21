@@ -939,6 +939,8 @@ std::unordered_map<UserPath, std::string> g_default_paths;
 } // namespace
 
 void SetUserPath(const std::string& path) {
+    // Every path below is set again, even if one was asked for before (and set to the default).
+    g_paths.clear();
     std::string& user_path = g_paths[UserPath::UserDir];
 
     if (!path.empty() && CreateFullPath(path)) {

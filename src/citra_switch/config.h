@@ -30,8 +30,9 @@ enum class SystemFileSetupMode {
     New3ds,
 };
 
-// Sets up default directory and logging on first boot.
-int Bootstrap();
+// Sets up default directory and logging on first boot. `user_dir` replaces the dekopon
+// directory (sdmc:/switch/dekopon/, or the one Settings > Storage points to).
+int Bootstrap(const std::string& user_dir = {});
 
 // The configured paths.
 const SwitchPaths& GetPaths();

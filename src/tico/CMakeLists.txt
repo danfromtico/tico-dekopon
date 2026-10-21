@@ -50,10 +50,13 @@ find_library(SWITCH_SODIUM sodium REQUIRED)
 target_include_directories(tico SYSTEM AFTER PRIVATE ${SWITCH_SODIUM_INCLUDE_DIR})
 target_link_libraries(tico PRIVATE ${SWITCH_SODIUM})
 
+# tico-dekopon's own release, apart from Dekopon's version
+set(TICO_DEKOPON_VERSION "3.0.0")
+
 nx_generate_nacp(OUTPUT tico-dekopon.nacp
     NAME "tico-dekopon"
     AUTHOR "Azahar Team \& PalindromicBreadLoaf \& ticoverse.com"
-    VERSION "${DEKOPON_VERSION}"
+    VERSION "${TICO_DEKOPON_VERSION}"
 )
 
 # The overlay's fonts, strings and pictures, and the module's settings.json it lists, each

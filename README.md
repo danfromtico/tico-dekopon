@@ -1,3 +1,18 @@
+<h1 align="center">tico Dekopon</h1>
+
+*Part of the Tico ecosystem* - https://www.ticoverse.com
+
+This fork runs [Dekopon](https://github.com/PalindromicBreadLoaf/dekopon) as a tico module: tico's in-game overlay, settings and save folders on top of Dekopon's renderer and JIT, which are left as they are.
+
+- Install: extract `tico-dekopon-module.zip` into `sdmc:/tico/modules/` (you get `sdmc:/tico/modules/dekopon/`).
+- System files: `sdmc:/tico/system/dekopon/`.
+- Frame generation: `Lossless.dll` goes in `sdmc:/tico/system/lsfg/`, shared with tico's other cores.
+- Build: `./build_tico_module.sh` (uses `ghcr.io/autorunhq/switch-dev:2026.10.12`).
+
+What follows is Dekopon's own README.
+
+----------
+
 <h1 align="center">Dekopon</h1>
 
 <p align="center">
@@ -150,7 +165,7 @@ Obviously, this needs a working internet connection.
 
 2/3/4x frame generation is supported via LSFG. You must supply your own Lossless.dll downloaded from
 [Steam](https://store.steampowered.com/app/993090/Lossless_Scaling/) to use this feature. Lossless.dll
-should be placed in `sdmc:/switch/dekopon/lsfg/Lossless.dll`. The settings UI (Under Settings > Graphics >
+should be placed in `sdmc:/tico/system/lsfg/Lossless.dll` (shared with the other tico cores) or `sdmc:/switch/dekopon/lsfg/Lossless.dll`. The settings UI (Under Settings > Graphics >
 Frame Generation) will tell you if the file was detected. This has a very large GPU performance impact 
 (much more than increase render resolution), so expect to have to overclock the GPU to get good results
 out of it. I found that 2x is possible in handheld at 460MHz with 25% flow scale. Mess around with the 

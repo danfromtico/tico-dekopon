@@ -85,6 +85,6 @@ set_property(TARGET tico_romfs APPEND PROPERTY DKP_ASSET_FILES ${TICO_ROMFS_FILE
 nx_create_nro(tico
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/tico-dekopon.nro"
     NACP "${CMAKE_CURRENT_BINARY_DIR}/tico-dekopon.nacp"
-    ICON "${PROJECT_SOURCE_DIR}/src/citra_switch/icon.jpg"
+    ICON "${PROJECT_SOURCE_DIR}/tico/icon.jpg"
     ROMFS tico_romfs
 )

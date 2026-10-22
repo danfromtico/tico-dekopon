@@ -596,6 +596,8 @@ bool RunGame(const std::string& rom_path, const std::string& display_title) {
 
 int Run(int argc, char** argv) {
     appletLockExit();
+    // Mesa's shader cache beside Dekopon's files, not in sdmc:/.mesa; set before the GPU starts
+    TicoBridge::UseShaderCacheDir("sdmc:/tico/system/dekopon/cache/mesa");
     for (int i = 0; i < argc; i++) {
         launch_args.emplace_back(argv[i] ? argv[i] : "");
     }

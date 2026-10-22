@@ -26,4 +26,8 @@ void PlaytimeFlush() {
     tico::PlaytimeFlush();
 }
 
+void UseShaderCacheDir(const std::string& dir) {
+    tico::UseShaderCacheDir(dir);
+}
+
 } // namespace TicoBridge

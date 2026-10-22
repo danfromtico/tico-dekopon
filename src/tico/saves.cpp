@@ -138,7 +138,10 @@ std::string UndoPath(u64 title_id) {
 
 void UseTicoFolders() {
     UseFolder(FileUtil::UserPath::SDMCDir, ContentDir("tico_saves_path", "sdmc:/tico/saves/"));
-    UseFolder(FileUtil::UserPath::StatesDir, ContentDir("tico_states_path", "sdmc:/tico/states/"));
+    // states in a folder of their own: tico Azahar names its states the same way
+    // (<TitleID>.<slot>.cst) in 3ds/, and one emulator's state may not load in the other
+    UseFolder(FileUtil::UserPath::StatesDir,
+              ContentDir("tico_states_path", "sdmc:/tico/states/") + "dekopon/");
     // LayeredFS mods and texture packs stay in Dekopon's load/, which holds both
     LOG_INFO(Frontend, "saves: SD card in {}, states in {}, mods and textures in {}",
              FileUtil::GetUserPath(FileUtil::UserPath::SDMCDir),

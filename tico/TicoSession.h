@@ -13,6 +13,10 @@
 ///   inherits_shared             this user got the data from before per-user
 ///                               folders: a core moves its own old saves
 ///                               (Dolphin's tico/system/gc, ...) only for them
+///   forwarder                   started from the game's forwarder on the
+///                               Switch's home menu (for the user it names, or
+///                               the one the Switch asked for): going back to
+///                               tico closes it, back to the home menu
 ///   ra_enabled, ra_username,
 ///   ra_token, ra_hardcore_mode  RetroAchievements (a token, never a password)
 ///   ra_badges                   false: pop-ups use a placeholder, no badge
@@ -53,6 +57,7 @@ struct Session {
   bool raEnabled = false, raHardcore = false;
   bool raBadges = true; ///< tico fetched badges; false: show a placeholder
   bool inheritsShared = true; ///< A core's old saves are this user's to move
+  bool forwarder = false;     ///< Started from a game's forwarder: exits to the home menu
   std::string raUsername, raToken;
   std::string playNonce; ///< This launch's, for PlaytimeFlush
   std::string presence;  ///< The Discord note's JSON, without the process; "" for none
@@ -105,6 +110,7 @@ inline const Session &CurrentSession() {
     s.raBadges = !(j.contains("ra_badges") && j["ra_badges"].is_boolean()) || flag("ra_badges");
     s.inheritsShared =
         !(j.contains("inherits_shared") && j["inherits_shared"].is_boolean()) || flag("inherits_shared");
+    s.forwarder = flag("forwarder");
     s.raUsername = str("ra_username");
     s.raToken = str("ra_token");
     s.playNonce = str("play_nonce");
@@ -266,7 +272,7 @@ inline void UseShaderCacheDir(const std::string &dir) {
 
 /// @name Discord presence
 /// A presence sysmodule sees which title runs, not the game inside it, so the
-/// core leaves it a note naming the game (sdmc:/config/switchrpc/now_playing.json)
+/// core leaves it a note naming the game (sdmc:/tico/system/switchrpc/now_playing.json)
 /// with its own process and title: the sysmodule shows it only while that
 /// process lives, so nothing needs removing when the core exits. tico wrote the
 /// same note before handing over; a core running as an application of its own
@@ -294,7 +300,7 @@ inline void PresenceShow() {
   note["pid"] = pid;
   note["program_id"] = programHex;
   const std::string text = note.dump(-1, ' ', false, nlohmann::json::error_handler_t::replace);
-  const char *path = "sdmc:/config/switchrpc/now_playing.json";
+  const char *path = "sdmc:/tico/system/switchrpc/now_playing.json";
   const std::string temp = std::string(path) + ".tmp";
   if (FILE *file = std::fopen(temp.c_str(), "wb")) {
     const bool ok = std::fwrite(text.data(), 1, text.size(), file) == text.size();

@@ -19,5 +19,7 @@ std::string SettingsText(const char* name);
 /// tico::PlaytimeFrame / PlaytimeFlush: the player's playtime.
 void PlaytimeFrame();
 void PlaytimeFlush();
+/// tico::UseShaderCacheDir: Mesa's shader cache in @p dir, before the GPU starts.
+void UseShaderCacheDir(const std::string& dir);
 
 } // namespace TicoBridge
